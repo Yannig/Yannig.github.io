@@ -137,19 +137,44 @@
 								<li>Magique ! (quand c'est au point ...)</li>
 								<li>A la limite du rêve éveillé par rapport à l'existant</li>
 							</ul>
-						<li>Cons</li>
+					</ul>
+				</section>
+
+				<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+					<h2>L'effet Puppet ...</h2>
+					<img src='images/its-a-kind-of-magic.gif' />
+				</section>
+
+				<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+					<h2>Par contre</h2>
+					<ul>
+						<li>Installation de l'infra Puppet :</li>
 							<ul>
-								<li>Installation de l'infra Puppet</li>
-								<li>Déploiement des agents</li>
-								<li>Déploiement à la demande = nouvel agent</li>
-								<li>Des descriptions mais pas d'enchaînement</li>
+								<li>puppet master/server</li>
+								<li>puppet dashboard</li>
+								<li>puppet DB</li>
+								<li>Postgres</li>
 							</ul>
+						<li>Déploiement des agents</li>
+						<li>Des descriptions mais pas d'enchaînement</li>
+						<li>Déploiement à la demande :</li>
+							<ul>
+								<li>Serveur Middleware</li>
+								<li>L'agent mco sur les serveurs</li>
+								<li>de l'authentification Middleware de messagerie</li>
+							</ul>
+						<li>Et pour conclure, l'horreur des certificats à gérer.</li>
 					</ul>
 					<aside class="notes">
 						Contexte : Usine à gaz à base de SSH<br/>
 						Infra puppet = master, dashboard, db, postgres, RAILS etc.<br/>
 						Agent à la demande = mcollective
 					</aside>
+				</section>
+
+				<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+					<h2>Bref ...</h2>
+					<img src='images/sur-la-tete.gif' />
 				</section>
 
 				<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
@@ -200,11 +225,6 @@
 					</aside>
 				</section>
 
-				<section data-background="white">
-					<h2>Architecture logiciel</h2>
-					<img src="images/infra_globale.png" />
-				</section>
-
 				<section>
 					<h2>Utilisation de Jenkins</h2>
 					<ul>
@@ -230,6 +250,11 @@
 						<li>Jenkins récupére automatiquement le contenu du SVN</li>
 						<li>Ansible est ensuite lancé avec cette copie</li>
 					</ul>
+				</section>
+
+				<section data-background="white">
+					<h2>Architecture logiciel</h2>
+					<img src="images/infra_globale.png" />
 				</section>
 
 				<section>

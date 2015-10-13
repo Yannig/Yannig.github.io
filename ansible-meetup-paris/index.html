@@ -1,320 +1,324 @@
 <!doctype html>
 <html lang="en">
 
-	<head>
-		<meta charset="utf-8">
+    <head>
+        <meta charset="utf-8">
 
-		<title>reveal.js - The HTML Presentation Framework</title>
+        <title>reveal.js - The HTML Presentation Framework</title>
 
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
+        <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+        <meta name="author" content="Hakim El Hattab">
 
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/black.css" id="theme">
 
-		<!-- Code syntax highlighting -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+        <!-- Code syntax highlighting -->
+        <link rel="stylesheet" href="lib/css/zenburn.css">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
 
-		<!--[if lt IE 9]>
-		<script src="lib/js/html5shiv.js"></script>
-		<![endif]-->
-	</head>
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
 
-	<body>
+    <body>
 
-		<div class="reveal">
+        <div class="reveal">
 
-			<!-- Any section element inside of this container is displayed as a slide -->
-			<div class="slides">
-				<section data-background="#ffffff">
-					<h1>Ansible Meetup</h1>
-					<h4>Petit retour d'expérience sur le déploiement d'application</h4>
-					<img src="images/logo_ansible.png" height="180" />
-					<p>
-						<small><a href="http://lesaventuresdeyannigdanslemondeit.blogspot.fr/">Yannig Perré</a> / <a href="https://twitter.com/YannigPerre">@gmail.com</a></small>
-					</p>
-				</section>
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+                <section data-background="#ffffff">
+                    <h1>Ansible Meetup</h1>
+                    <h4>Petit retour d'expérience sur le déploiement d'application</h4>
+                    <img src="images/logo_ansible.png" height="160" />
+                    <p><small><a href='#'>Kévin Le Bronnec</a> / <a href="mailto:kevin.le.bronnec@cgi.com">@cgi.com</a> - 
+                              <a href="http://lesaventuresdeyannigdanslemondeit.blogspot.fr/">Yannig Perré</a> / <a href="https://twitter.com/YannigPerre">@cgi.com</a></small></p>
+                    <img src="images/CGI_logo.png" width=160/>
+                </section>
 
-				<section>
-					<h2>A propos de l'auteur</h2>
-					<ul>
-					<li>Administrateur système et Java</li>
-					<li>Architecte applicatif/système</li>
-					<li>Outils d’industrialisation :</li>
-					<ul>
-						<li>Template Wiki</li>
-						<li>Scripts over SSH</li>
-						<li>Maintenance usine à gaz over SSH</li>
-					</ul>
-						<li>Puppet et Ansible il y a quelques temps</li>
-					</ul>
-				</section>
+                <section>
+                    <h2>A propos des auteurs</h2>
+                    <ul>
+                    <li>Administrateur système et Java</li>
+                    <li>Architecte applicatif/système</li>
+                    <li>Outils d’industrialisation :</li>
+                    <ul>
+                        <li>Template Wiki / Docxtemplar</li>
+                        <li>Scripts over SSH</li>
+                        <li>Maintenance usine à gaz over SSH</li>
+                    </ul>
+                        <li>Puppet et Ansible il y a quelques temps</li>
+                    </ul>
+                </section>
 
-				<section data-background="#dddddd">
-					<h2>A propos de notre application</h2>
-					<ul>
-						<li>Serveur d'application Java - 3 tiers</li>
-							<ul>
-								<li>Répartition de charge et éléments statiques sur Apache</li>
-								<li>Présentation à base de JSP</li>
-								<li>Couche métier</li>
-								<li>Stockage base Oracle</li>
-							</ul>
-						<li>Serveur de base de données Oracle</li>
-						<li>Apache</li>
-						<li>Divers (Streamserve, Batchs Java)</li>
-					</ul>
-				</section>
-				
-				<section>
-					<h2>Méthodologie de déploiement</h2>
-					<h4>Globalement à la main ...</h4>
-					<ul>
-						<li>Scripts d'installation :</li>
-							<ul>
-								<li>Domaine WebLogic</li>
-								<li>Serveur Oracle</li>
-								<li>Serveur Apache</li>
-							</ul>
-						<li>Document d'installation :</li>
-							<ul>
-								<li>Par composant (Apache, WebLogic, etc.)</li>
-								<li>Description enchaînement des installations (Oracle puis WebLogic puis Apache)</li>
-								<li>Configuration du logiciel (Ajout de certificat, modification utilisateur etc.)</li>
-							</ul>
-						</ul>
-					</ul>
-				</section>
+                <section data-background="#dddddd">
+                    <h2>A propos de notre application</h2>
+                    <ul>
+                        <li>Serveur d'application Java - 3 tiers</li>
+                        <li>Serveur de base de données Oracle</li>
+                        <li>Frontal Apache</li>
+                        <li>Divers briques</li>
+                    </ul>
+                </section>
+                
+                <section>
+                    <h2>Méthodologie de déploiement</h2>
+                    <h4>Globalement à la main ...</h4>
+                    <ul>
+                        <li>Scripts d'installation :</li>
+                            <ul>
+                                <li>Domaine WebLogic</li>
+                                <li>Serveur Oracle</li>
+                                <li>Serveur Apache</li>
+                            </ul>
+                        <li>Document d'installation :</li>
+                            <ul>
+                                <li>Par composant (Apache, WebLogic, etc.)</li>
+                                <li>Description enchaînement des installations (Oracle puis WebLogic puis Apache)</li>
+                                <li>Configuration du logiciel (Ajout de certificat, modification utilisateur etc.)</li>
+                            </ul>
+                        </ul>
+                    </ul>
+                </section>
 
-				<section data-background="#4d7e65" data-background-transition="zoom">
-					<h2>Globalement ...</h2>
-					<ul>
-						<li>Scripts différents d'un socle à un autre</li>
-						<li>Beaucoup de copier-coller</li>
-						<li>Pas de réentrance</li>
-						<li>Et je ne parle pas du reste</li>
-					</ul>
-					<aside class="notes">
-						Ne pas oublier de parler du gestionnaire de code source ainsi que du merveilleux partage windows.
-					</aside>
-				</section>
+                <section data-transition="slide" data-background="#222222" data-background-transition="zoom">
+                    <h2>Bienvenu au 20eme siècle...</h2>
+                    <img src='images/charlot-les-temps-modernes.gif' />
+                </section>
 
-				<section>
-					<h2>La reprise de tout ceci</h2>
-					<ul>
-						<li>La partie simple : passer sous SVN</li>
-						<li>La partie un peu moins simple : l'industrialisation</li>
-						<li>Dans un premier temps sous Puppet</li>
-						<li>Suite à une présentation interne, étude Ansible vs Puppet</li>
-					</ul>
-					<aside class="notes">
-						Globalement portage procédures existantes et suite à une présentation en interne, étude d'Ansible.<br/>
-						Pourquoi Puppet ?
-					</aside>
-				</section>
+                <section data-background="#4d7e65" data-background-transition="zoom">
+                    <h2>Globalement ...</h2>
+                    <ul>
+                        <li>Scripts différents d'un socle à un autre</li>
+                        <li>Beaucoup de copier-coller</li>
+                        <li>Pas de réentrance</li>
+                        <li>Et je ne parle pas du reste</li>
+                    </ul>
+                    <aside class="notes">
+                        Ne pas oublier de parler du gestionnaire de code source ainsi que du merveilleux partage windows.
+                    </aside>
+                </section>
 
-				<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
-					<h2>Un mot sur Puppet</h2>
-					<ul>
-						<li>POC il y a quelques années pour un gros client</li>
-						<li>Pros</li>
-							<ul>
-								<li>Très rapide !</li>
-								<li>Magique ! (quand c'est au point ...)</li>
-								<li>A la limite du rêve éveillé par rapport à l'existant</li>
-							</ul>
-					</ul>
-				</section>
+                <section>
+                    <h2>La reprise de tout ceci</h2>
+                    <ul>
+                        <li>La partie simple : passer sous SVN</li>
+                        <li>La partie un peu moins simple : l'industrialisation</li>
+                        <li>Dans un premier temps sous Puppet</li>
+                        <li>Suite à une présentation interne, étude Ansible vs Puppet</li>
+                    </ul>
+                    <aside class="notes">
+                        Globalement portage procédures existantes et suite à une présentation en interne, étude d'Ansible.<br/>
+                        Pourquoi Puppet ?
+                    </aside>
+                </section>
 
-				<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
-					<h2>L'effet Puppet ...</h2>
-					<img src='images/its-a-kind-of-magic.gif' />
-				</section>
+                <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+                    <h2>Un mot sur Puppet</h2>
+                    <ul>
+                        <li>POC il y a quelques années pour un gros client</li>
+                        <li>Pros</li>
+                            <ul>
+                                <li>Très rapide !</li>
+                                <li>Magique ! (quand c'est au point ...)</li>
+                                <li>A la limite du rêve éveillé par rapport à l'existant</li>
+                            </ul>
+                    </ul>
+                </section>
 
-				<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
-					<h2>Par contre</h2>
-					<ul>
-						<li>Installation de l'infra Puppet :</li>
-							<ul>
-								<li>puppet master/server</li>
-								<li>puppet dashboard</li>
-								<li>puppet DB</li>
-								<li>Postgres</li>
-							</ul>
-						<li>Déploiement des agents</li>
-						<li>Des descriptions mais pas d'enchaînement</li>
-						<li>Déploiement à la demande :</li>
-							<ul>
-								<li>Serveur Middleware</li>
-								<li>L'agent mco sur les serveurs</li>
-								<li>de l'authentification Middleware de messagerie</li>
-							</ul>
-						<li>Et pour conclure, l'horreur des certificats à gérer.</li>
-					</ul>
-					<aside class="notes">
-						Contexte : Usine à gaz à base de SSH<br/>
-						Infra puppet = master, dashboard, db, postgres, RAILS etc.<br/>
-						Agent à la demande = mcollective
-					</aside>
-				</section>
+                <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+                    <h2>L'effet Puppet ...</h2>
+                    <img src='images/its-a-kind-of-magic.gif' />
+                </section>
 
-				<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
-					<h2>Bref ...</h2>
-					<img src='images/sur-la-tete.gif' />
-				</section>
+                <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+                    <h2>Par contre</h2>
+                    <ul>
+                        <li>Installation de l'infra Puppet :</li>
+                            <ul>
+                                <li>puppet master/server</li>
+                                <li>puppet dashboard</li>
+                                <li>puppet DB</li>
+                                <li>Postgres</li>
+                            </ul>
+                        <li>Déploiement des agents</li>
+                        <li>Des descriptions mais pas d'enchaînement</li>
+                        <li>Déploiement à la demande :</li>
+                            <ul>
+                                <li>Serveur Middleware</li>
+                                <li>L'agent mco sur les serveurs</li>
+                                <li>de l'authentification Middleware de messagerie</li>
+                            </ul>
+                        <li>Et pour conclure, l'horreur des certificats à gérer.</li>
+                    </ul>
+                    <aside class="notes">
+                        Contexte : Usine à gaz à base de SSH<br/>
+                        Infra puppet = master, dashboard, db, postgres, RAILS etc.<br/>
+                        Agent à la demande = mcollective
+                    </aside>
+                </section>
 
-				<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
-					<h2>Petite étude Ansible vs Puppet</h2>
-					<ul>
-						<li>Avantages de Puppet :</li>
-							<ul>
-								<li>Couverture très grande</li>
-								<li>Langage super intéressant (descriptif)</li>
-								<li>Exécution très rapide</li>
-							</ul>
-						<li>Avantages d'Ansible :</li>
-							<ul>
-								<li>Langage moins expressif mais beaucoup plus simple !</li>
-								<li>Pas d'agent, pas d'infra</li>
-								<li>Notion d'enchaînement très naturelle</li>
-								<li>Sert pour n'importe quel type d'opération</li>
-							</ul>
-					</ul>
-					<aside class="notes">
-						Cette étude a été réalisé suite à une démonstration en interne
-					</aside>
-				</section>
+                <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+                    <h2>Bref ...</h2>
+                    <img src='images/sur-la-tete.gif' />
+                </section>
 
-				<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
-					<h2>Ansible vs Puppet, pour résumer :</h2>
-					<ul>
-						<li>Puppet a comme point fort :</li>
-							<ul>
-								<li>La gestion de l'infra/socle</li>
-								<li>Il reste plus rapide</li>
-							</ul>
-						<li>Ansible pour ça part :
-							<ul>
-								<li>Beaucoup plus simple à déployer</li>
-								<li>Notion d'enchaînement !</li>
-								<li>Utilisable pour n'importe quoi :</li>
-									<ul>
-										<li>Déploiement d'applications</li>
-										<li>Gestes d'exploitation</li>
-									</ul>
-							</ul>
-					</ul>
-					<aside class="notes">
-						Plus rapide dans le cas d'un catalogue non modifié<br/>
-						Plus simple à déployer : merci à Puppet pour sa couche SSL (certificat clients, serveurs)<br/>
-						Export, import de base, calcul de stats
-					</aside>
-				</section>
+                <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+                    <h2>Petite étude Ansible vs Puppet</h2>
+                    <ul>
+                        <li>Avantages de Puppet :</li>
+                            <ul>
+                                <li>Couverture très grande</li>
+                                <li>Langage super intéressant (descriptif)</li>
+                                <li>Exécution très rapide</li>
+                            </ul>
+                        <li>Avantages d'Ansible :</li>
+                            <ul>
+                                <li>Langage moins expressif mais beaucoup plus simple !</li>
+                                <li>Pas d'agent, pas d'infra</li>
+                                <li>Notion d'enchaînement très naturelle</li>
+                                <li>Sert pour n'importe quel type d'opération</li>
+                            </ul>
+                    </ul>
+                    <aside class="notes">
+                        Cette étude a été réalisé suite à une démonstration en interne
+                    </aside>
+                </section>
 
-				<section>
-					<h2>Utilisation de Jenkins</h2>
-					<ul>
-						<li>Planification de job</li>
-							<ul>
-								<li>Opération sur les bases de données</li>
-								<li>Calcul de stats Oracle</li>
-							</ul>
-						<li>Construction des packages</li>
-						<li>Préparation livraisons</li>
-						<li>Lancement intéractif</li>
-							<ul>
-								<li>Limite les bétises</li>
-								<li>Permet de contrôler les accès</li>
-								<li>Garde une trace des opérations</li>
-							</ul>
-					</ul>
-				</section>
+                <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+                    <h2>Ansible vs Puppet, pour résumer :</h2>
+                    <ul>
+                        <li>Puppet a comme point fort :</li>
+                            <ul>
+                                <li>La gestion de l'infra/socle</li>
+                                <li>Il reste plus rapide</li>
+                            </ul>
+                        <li>Ansible pour ça part :
+                            <ul>
+                                <li>Beaucoup plus simple à déployer</li>
+                                <li>Notion d'enchaînement !</li>
+                                <li>Utilisable pour n'importe quoi :</li>
+                                    <ul>
+                                        <li>Déploiement d'applications</li>
+                                        <li>Gestes d'exploitation</li>
+                                    </ul>
+                            </ul>
+                    </ul>
+                    <aside class="notes">
+                        Plus rapide dans le cas d'un catalogue non modifié<br/>
+                        Plus simple à déployer : merci à Puppet pour sa couche SSL (certificat clients, serveurs)<br/>
+                        Export, import de base, calcul de stats
+                    </aside>
+                </section>
 
-				<section>
-					<h2>SVN pour garder une trace des changements</h2>
-					<ul>
-						<li>Jenkins récupére automatiquement le contenu du SVN</li>
-						<li>Ansible est ensuite lancé avec cette copie</li>
-					</ul>
-				</section>
+                <section>
+                    <h2>Utilisation de Jenkins</h2>
+                    <!-- TODO : Ajout d'un logo jenkins -->
+                    <ul>
+                        <li>Pourquoi Jenkins</li>
+                        <li>Planification de job</li>
+                        <li>Construction des packages</li>
+                        <li>Préparation livraisons</li>
+                        <li>Lancement intéractif</li>
+                    </ul>
+                    <aside class="notes">
+                        <ul>
+                            <li>Opération sur les bases de données</li>
+                            <li>Calcul de stats Oracle</li>
+                        </ul>
+                        <ul>
+                            <li>Limite les bétises</li>
+                            <li>Permet de contrôler les accès</li>
+                            <li>Garde une trace des opérations</li>
+                        </ul>
+                    </aside>
+                </section>
 
-				<section data-background="white">
-					<h2>Architecture logiciel</h2>
-					<img src="images/infra_globale.png" />
-				</section>
+                <section>
+                    <!-- TODO : Ajout d'un logo SVN -->
+                    <h2>SVN pour garder une trace des changements</h2>
+                    <ul>
+                        <li>Jenkins récupére automatiquement le contenu du SVN</li>
+                        <li>Ansible est ensuite lancé avec cette copie</li>
+                    </ul>
+                </section>
 
-				<section>
-					<h2>Travaux en cours</h2>
-					<ul>
-						<li>Utilisé pour nos déploiements chez un client</li>
-						<li>Formation en cours d'une équipe en charge installation</li>
-							<ul>
-								<li>Gestes d'exploitation BDD</li>
-								<li>MAJ plateforme Java</li>
-								<li>Déploiement application</li>
-							</ul>
-						<li>Surveillance technique/applicative avec Naemon</li>
-						<li>Mail de mise à disponibilité</li>
-						<li>Tests fonctionnels</li>
-					</ul>
-				</section>
+                <section data-background="white">
+                    <h2>Architecture logiciel</h2>
+                    <img src="images/infra_globale.png" />
+                </section>
 
-				<section>
-					<h2>En attente d'Ansible v2</h2>
-					<ul>
-						<li>Quelques bugs qui trainent</li>
-						<li>Ajout des blocks try/catch</li>
-					</ul>
-					<aside class="notes">
-						Notamment le delegate_to en v1.9.
-					</aside>
-				</section>
+                <section>
+                    <h2>Travaux en cours</h2>
+                    <ul>
+                        <li>Utilisé pour nos déploiements chez un client</li>
+                        <li>Formation en cours d'une équipe en charge installation</li>
+                            <ul>
+                                <li>Gestes d'exploitation BDD</li>
+                                <li>MAJ plateforme Java</li>
+                                <li>Déploiement application</li>
+                            </ul>
+                        <li>Surveillance technique/applicative avec Naemon</li>
+                        <li>Mail de mise à disponibilité</li>
+                        <li>Tests fonctionnels</li>
+                    </ul>
+                </section>
 
-			</div>
+                <section>
+                    <h2>En attente d'Ansible v2</h2>
+                    <ul>
+                        <li>Quelques bugs qui trainent</li>
+                        <li>Ajout des blocks try/catch</li>
+                    </ul>
+                    <aside class="notes">
+                        Notamment le delegate_to en v1.9.
+                    </aside>
+                </section>
 
-		</div>
+            </div>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
+        </div>
 
-		<script>
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
 
-			// Full list of configuration options available at:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				history: true,
-				center: true,
+        <script>
 
-				transition: 'convex', // none/fade/slide/convex/concave/zoom
+            // Full list of configuration options available at:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
 
-				// Optional reveal.js plugins
-				dependencies: [
-					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true },
-					{ src: 'plugin/notes/notes.js', async: true }
-				]
-			});
+                transition: 'convex', // none/fade/slide/convex/concave/zoom
 
-		</script>
+                // Optional reveal.js plugins
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true },
+                    { src: 'plugin/notes/notes.js', async: true }
+                ]
+            });
 
-	</body>
+        </script>
+
+    </body>
 </html>

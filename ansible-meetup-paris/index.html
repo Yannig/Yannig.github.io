@@ -225,8 +225,18 @@
                 </section>
 
                 <section>
+                    <h2>Ansible et l'intégration technique</h2>
+                    <ul>
+                        <li>Pourquoi avons nous migré</li>
+                        <li>Evoluer vers un outil nouveau du marché</li>
+						<li>La simplicité de la maintenance</li>
+						<li>L'adaptabilité aux contextes d'intégration</li>
+                    </ul>
+                </section>
+				
+                <section>
                     <h2>Utilisation de Jenkins</h2>
-                    <!-- TODO : Ajout d'un logo jenkins -->
+					<img src="images/master-jenkins-normal3.svg" height="150" width="150"/>
                     <ul>
                         <li>Pourquoi Jenkins</li>
                         <li>Planification de job</li>
@@ -235,10 +245,13 @@
                         <li>Lancement intéractif</li>
                     </ul>
                     <aside class="notes">
+						Opérations courantes basiques
                         <ul>
-                            <li>Opération sur les bases de données</li>
-                            <li>Calcul de stats Oracle</li>
+							<li>Maintenance de serveur d'app (redémarrages, parametrage...)</li>
+                            <li>Opération sur les bases de données (stats/index, scripts sql...)</li>
+                            <li>Processus de livraison</li>
                         </ul>
+						Notion de contrôle
                         <ul>
                             <li>Limite les bétises</li>
                             <li>Permet de contrôler les accès</li>
@@ -246,14 +259,20 @@
                         </ul>
                     </aside>
                 </section>
-
+				
                 <section>
-                    <!-- TODO : Ajout d'un logo SVN -->
-                    <h2>SVN pour garder une trace des changements</h2>
+                    <h2>SVN pour la gestion des configuration</h2>
                     <ul>
-                        <li>Jenkins récupére automatiquement le contenu du SVN</li>
-                        <li>Ansible est ensuite lancé avec cette copie</li>
+                        <li>Jenkins récupère automatiquement le contenu sur SVN</li>
+						<li>Gestion de version des playbook</li>
+						<li>Gestion de version des inventaires</li>
                     </ul>
+					<img src="images/tyrus-svn2.png" height="100" width="100" style="float:right"/>
+                    <aside class="notes">
+                        <ul>
+							<li>Ansible est lancé avec les versions des playbooks sélectionnées sur le job jenkins</li>
+                        </ul>
+                    </aside>
                 </section>
 
                 <section data-background="white">
@@ -264,17 +283,25 @@
                 <section>
                     <h2>Travaux en cours</h2>
                     <ul>
-                        <li>Utilisé pour nos déploiements chez un client</li>
+                        <li>Utilisé pour nos déploiements chez certain de nos clients</li>
                         <li>Formation en cours d'une équipe en charge installation</li>
                             <ul>
                                 <li>Gestes d'exploitation BDD</li>
                                 <li>MAJ plateforme Java</li>
-                                <li>Déploiement application</li>
+                                <li>Déploiement applicatif</li>
                             </ul>
                         <li>Surveillance technique/applicative avec Naemon</li>
-                        <li>Mail de mise à disponibilité</li>
+                        <li>Communication par mail automatique</li>
                         <li>Tests fonctionnels</li>
                     </ul>
+                    <aside class="notes">
+                        <ul>
+							<li>Opération technique socle + applicatif</li>
+                            <li>Les inventaires sont utilisables pour tout le middleware</li>
+                            <li>Diffusion des informations sur les plateformes aux clients, fonctionnels, architectes</li>
+                        </ul>
+                        </ul>
+                    </aside>
                 </section>
 
                 <section>

@@ -6,7 +6,7 @@
 
         <title>Ansible meetup #9</title>
 
-        <meta name="description" content="Retour d'expérience sur l'utilisation d'Ansible / Jenkins / Docker dans un contexte d'intégration continue">
+        <meta name="description" content="Utilisation d'Ansible avec Docker (et réciproquement)">
         <meta name="author" content="Yannig Perré">
 
         <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -42,8 +42,9 @@
             <div class="slides">
                 <section data-background="#ffffff">
                     <h1>Ansible Meetup</h1>
-                    <h4>Retour d'expérience sur l'utilisation d'Ansible / Jenkins / Docker dans un contexte d'intégration continue</h4>
+                    <h4>Utilisation d'Ansible avec Docker</h4>
                     <img src="images/logo_ansible.png" height="160" />
+                    <img src="images/docker.png" height="160" />
                     <p><small><a href='#'>Kévin Le Bronnec</a> / <a href="mailto:kevin.le.bronnec@cgi.com">@cgi.com</a> - 
                               <a href="http://lesaventuresdeyannigdanslemondeit.blogspot.fr/">Yannig Perré</a> / <a href="https://twitter.com/YannigPerre">@cgi.com</a></small></p>
                     <img src="images/CGI_logo.png" width=160/>
@@ -52,21 +53,15 @@
                 <section>
                     <h2>A propos des auteurs</h2>
                     <ul>
-                    <li>Administrateur système et Java</li>
-                    <li>Architecte applicatif/système</li>
-                    <li>Outils d’industrialisation :</li>
-                    <ul>
-                        <li>Scripts + Jenkins</li>
-                        <li>Puppet il y a un peu plus de 3 ans</li>
-                        <li>Et depuis 1 an et demi Ansible</li>
+                      <li>Administrateur système et Java</li>
+                      <li>Architecte applicatif/système</li>
                     </ul>
                 </section>
 
                 <section data-background="#dddddd">
                     <h2>Contexte de travail</h2>
                     <ul>
-                        <li>Applications 3 tiers</li>
-                        <li>Serveur éditique</li>
+                        <li>Applications 3 tiers classiques</li>
                         <li>Gestion d'infra</li>
                         <li>Divers briques</li>
                     </ul>
@@ -78,7 +73,7 @@
                     <ul>
                         <li>Déploiement d'application J2E</li>
                         <li>Gestion de la base Oracle</li>
-                        <li>Gestion exploitation (A/R, surveillance etc.)</li>
+                        <li>Gestion exploitation</li>
                     </ul>
                 </section>
 
@@ -100,65 +95,105 @@
                 <section>
                     <h2>Premier pas avec Docker</h2>
 
-                    <h3>Besoin de TNR sur environnement vierge</h3>
-                      <ul>
-                        <li>Construction de container en version CentOS 6 et 7</li>
-                        <li>Lancement des jobs de préparation</li>
+                    <h4>Besoin de TNR</h4>
+                    <ul>
+                        <li>Container CentOS 6 et 7</li>
+                        <li>Lancement des jobs</li>
+                        <li>Et on sort le pop corn</li>
                     </ul>
                 </section>
 
                 <section>
-                    <h2>Etudes se posant des questions sur le sujet</h2>
-                      <ul>
-                        <li>Mais pas vraiment prêt</li>
-                        <li>Début d'implémentation avec Dockerfile + shell</li>
-                        <li>Mais tout est à refaire</li>
+                    <h2>Résultat des premiers tests ...</h2>
+                    <img src='images/test_non_reg.gif' />
+                </section>
+
+                <section>
+                    <h2>On corrige ...</h2>
+
+                    <ul>
+                        <li>Docker n'aime pas trop systemd</li>
+                        <li>Régression Ansible v2</li>
+                        <li>Mais en étant patient ...</li>
                     </ul>
                 </section>
 
                 <section>
-                    <h2>Mixe des deux besoins</h2>
-                      <ul>
-                        <li>Construction des images Docker avec Ansible</li>
-                        <li>Instantiation des images avec Ansible</li>
-                        <li>Enchaînement des opérations à l'aide d'Ansible</li>
-                    </ul>
+                    <h2>Ça marche !</h2>
+                    <img src='images/homer_woohoo.png' />
                 </section>
 
                 <section>
-                    <h2>Avantages vs Inconvénients</h2>
-                      <ul>
-                        <li>Consommation de 30 Mo supplémentaire</li>
-                        <li>Mais grosse contrepartie</li>
-                    </ul>
+                    <h2>Pendant ce temps là ...</h2>
+                    <img src='images/meanwhile_in_australia.jpg'/>
                 </section>
 
                 <section>
-                    <h2>Autres possibilités</h2>
+                    <h2>Les études veulent faire du Docker</h2>
                       <ul>
-                        <li>Depuis Ansible v2 connecteur Docker natif</li>
-                        <li>Démarrage avec une image CentOS vierge</li>
-                        <li>Déroulement procédure</li>
-                        <li>Docker commit pour la création</li>
-                    </ul>
+                          <li>Mais pas vraiment prêt</li>
+                          <li>Début d'implémentation avec Dockerfile + shell</li>
+                          <li>En gros, il faut tout refaire</li>
+                      </ul>
                 </section>
 
                 <section>
-                    <h2>Avantage vs Inconvénients</h2>
+                    <h2>Et si on mixait les deux ?</h2>
+                    <img src='images/ansible_docker.png' />
+                </section>
+
+                <section>
+                    <h2>La démarche</h2>
                       <ul>
-                        <li>Ne respecte pas le sacro saint Dockerfile</li>
-                        <li>Mais moins de dépendance dans l'image</li>
-                        <li>Construction plus simple</li>
-                    </ul>
+                          <li>Construction des images Docker avec Ansible</li>
+                          <li>Instantiation des containers avec Ansible</li>
+                          <li>Enchaînement des opérations à l'aide d'Ansible</li>
+                      </ul>
+                </section>
+
+                <section>
+                    <h2>Et ça marche !</h2>
+                    <img src='images/homer_woohoo.png' />
+                </section>
+
+                <section>
+                    <h2>Plusieurs possibilités</h2>
+                      <ul>
+                          <li>Recyclage playbooks</li>
+                          <li>Connecteur Docker natif Ansible v2</li>
+                      </ul>
+                </section>
+
+                <section>
+                    <h2>Rajoutez Jenkins et vous obtenez ...</h2>
+                    <img src='images/continuous_delivry.gif' />
+                </section>
+
+                <section>
+                    <h2>Retours sur l'utilisation de Docker</h2>
+                      <ul>
+                          <li>Ne remplace pas la virtualisation</li>
+                          <li>systemd n'est pas ton ami</li>
+                          <li>Peut demander quelques adaptations</li>
+                      </ul>
+                </section>
+
+                <section>
+                    <h2>Quelques trucs pratiques</h2>
+                      <ul>
+                          <li>Simplicité construction des images</li>
+                          <li>Docker compose</li>
+                          <li>réduction des temps de déploiement</li>
+                      </ul>
                 </section>
 
                 <section>
                     <h2>Démo</h2>
                       <ul>
-                        <li>Construction de container docker vierge + TNR</li>
-                        <li>Construction des images docker par Dockerfile</li>
-                        <li>Construction des images docker par Ansible</li>
-                    </ul>
+                          <li>Construction des images docker par Dockerfile</li>
+                          <li>Docker compose vs Playbook Ansible</li>
+                          <li>Exemple de répartition de charge</li>
+                      </ul>
                 </section>
 
             </div>

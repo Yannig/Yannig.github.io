@@ -1,235 +1,271 @@
 <!doctype html>
 <html lang="en">
 
-    <head>
-        <meta charset="utf-8">
+  <head>
+    <meta charset="utf-8">
 
-        <title>Ansible meetup #9</title>
+    <title>Ansible meetup #9</title>
 
-        <meta name="description" content="Utilisation d'Ansible avec Docker (et réciproquement)">
-        <meta name="author" content="Yannig Perré">
+    <meta name="description" content="Utilisation d'Ansible avec Docker (et réciproquement)">
+    <meta name="author" content="Yannig Perré">
 
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
-        <link rel="stylesheet" href="../reveal/css/reveal.css">
-        <link rel="stylesheet" href="../reveal/css/theme/black.css" id="theme">
+    <link rel="stylesheet" href="../reveal/css/reveal.css">
+    <link rel="stylesheet" href="../reveal/css/theme/black.css" id="theme">
 
-        <!-- Code syntax highlighting -->
-        <link rel="stylesheet" href="../reveal/lib/css/zenburn.css">
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="../reveal/lib/css/zenburn.css">
 
-        <!-- Printing and PDF exports -->
-        <script>
-            var link = document.createElement( 'link' );
-            link.rel = 'stylesheet';
-            link.type = 'text/css';
-            link.href = window.location.search.match( /print-pdf/gi ) ? '../reveal/css/print/pdf.css' : '../reveal/css/print/paper.css';
-            document.getElementsByTagName( 'head' )[0].appendChild( link );
-        </script>
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? '../reveal/css/print/pdf.css' : '../reveal/css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
 
-        <!--[if lt IE 9]>
-        <script src="../reveal/lib/js/html5shiv.js"></script>
-        <![endif]-->
-    </head>
+    <!--[if lt IE 9]>
+    <script src="../reveal/lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
 
-    <body>
+  <body>
 
-        <div class="reveal">
+    <div class="reveal">
 
-            <!-- Any section element inside of this container is displayed as a slide -->
-            <div class="slides">
-                <section data-background="#ffffff">
-                    <h1>Ansible Meetup</h1>
-                    <h4>Utilisation d'Ansible avec Docker</h4>
-                    <img src="images/logo_ansible.png" height="160" />
-                    <img src="images/docker.png" height="160" />
-                    <p><small><a href='#'>Kévin Le Bronnec</a> / <a href="mailto:kevin.le.bronnec@cgi.com">@cgi.com</a> - 
-                              <a href="http://lesaventuresdeyannigdanslemondeit.blogspot.fr/">Yannig Perré</a> / <a href="https://twitter.com/YannigPerre">@cgi.com</a></small></p>
-                    <img src="images/CGI_logo.png" width=160/>
-                </section>
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section data-background="#ffffff">
+          <h1>Ansible Meetup</h1>
+          <h4>Utilisation d'Ansible avec Docker</h4>
+          <img src="images/logo_ansible.png" height="160" />
+          <img src="images/docker.png" height="160" />
+          <p><small><a href="http://lesaventuresdeyannigdanslemondeit.blogspot.fr/">Yannig Perré</a> / <a href="https://twitter.com/YannigPerre">@cgi.com</a></small></p>
+          <img src="images/CGI_logo.png" width=160/>
+        </section>
 
-                <section>
-                    <h2>A propos des auteurs</h2>
-                    <ul>
-                      <li>Administrateur système et Java</li>
-                      <li>Architecte applicatif/système</li>
-                    </ul>
-                </section>
+        <section>
+          <h2>Me concernant</h2>
+          <ul>
+            <li>Administrateur système et Java</li>
+            <li>Architecte applicatif/système</li>
+          </ul>
+        </section>
 
-                <section data-background="#dddddd">
-                    <h2>Contexte de travail</h2>
-                    <ul>
-                        <li>Applications 3 tiers classiques</li>
-                        <li>Gestion d'infra</li>
-                        <li>Divers briques</li>
-                    </ul>
-                </section>
+        <section data-background="#dddddd">
+          <h2>Contexte de travail</h2>
+          <ul>
+              <li>Applications 3 tiers classiques</li>
+              <li>Gestion d'infra</li>
+              <li>Divers briques</li>
+          </ul>
+        </section>
 
-                <section>
-                    <h2>Méthodologie de déploiement</h2>
-                    <h4>Ansible et Jenkins depuis 1 an</h4>
-                    <ul>
-                        <li>Déploiement d'application J2E</li>
-                        <li>Gestion de la base Oracle</li>
-                        <li>Gestion exploitation</li>
-                    </ul>
-                </section>
+        <section>
+          <h2>Méthodologie de déploiement</h2>
+          <h4>Ansible et Jenkins depuis 1 an</h4>
+          <ul>
+              <li>Déploiement d'application J2E</li>
+              <li>Gestion de la base Oracle</li>
+              <li>Gestion exploitation</li>
+          </ul>
+        </section>
 
-                <section>
-                    <h2>Refactoring en cours</h2>
-                    <ul>
-                        <li>Meilleur séparation des inventaires/rôles</li>
-                        <li>Réduire la complexité des inventaires</li>
-                    </ul>
-                </section>
+        <section data-background="#aaa">
+          <h2>Exemple de playbook</h2>
+          <pre><code class=YAML contenteditable data-trim >
+---
 
-                <section>
-                    <h2>Bref, ça marche bien !</h2>
-                    <img src='images/its_all_working.gif' />
-                </section>
+- name: "Création du groupe batch"
+group: name={{batch_group}}
 
-                <section>
-                    <h2>Mais maintenant que ça marche</h2>
-                    <ul>
-                        <li>Penser à versionner</li>
-                        <li>Besoin de déploiement continue</li>
-                        <li>Et un peu de test</li>
-                    </ul>
-                    <img src='images/il_faudrait_versionner.gif' width="300" style="float:right" />
-                </section>
+- name: "Création du user batch"
+user: name={{batch_user}} group={{batch_group}} createhome=yes
+          </code></pre>
+        </section>
 
-                <section>
-                    <h2>Premier pas avec Docker</h2>
+        <section>
+          <h2>REX Ansible</h2>
+          <ul>
+            <li>Gains
+              <ul>
+                <li>Déploiement plus rapide</li>
+                <li>Plus de sécurité au niveau des déploiements</li>
+              </ul>
+            </li>
+            <li>Mais dans les faits peu de temps gagné
+              <ul>
+                <li>Nouvelles procédures</li>
+                <li>Déroulement toujours manuels des procédures</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
 
-                    <h4>Besoin de TNR</h4>
-                    <ul>
-                        <li>Container CentOS 6 et 7</li>
-                        <li>Lancement des jobs</li>
-                        <li>Et on sort le pop corn</li>
-                    </ul>
-                </section>
+        <section>
+          <h2>Refactoring en cours</h2>
+          <ul>
+              <li>Réduire la complexité des inventaires</li>
+              <li>Reprise des valeurs dans des rôles spécifiques</li>
+              <li>Job d'enchaînement</li>
+          </ul>
+        </section>
 
-                <section>
-                    <h2>Résultat des premiers tests ...</h2>
-                    <img src='images/test_non_reg.gif' />
-                </section>
+        <section>
+          <h2>Démo Oracle</h2>
+          <ul>
+            <li>Job unitaire
+              <ul>
+                <li>Création d'un tablespace</li>
+                <li>Création d'un schéma de BDD</li>
+              </ul>
+            </li>
+            <li>Lancement d'un multi job dans Jenkins avec import</li>
+          </ul>
+        </section>
 
-                <section>
-                    <h2>On corrige ...</h2>
+        <section>
+          <h2>Bref, ça marche bien !</h2>
+          <img src='images/its_all_working.gif' />
+        </section>
 
-                    <ul>
-                        <li>Docker n'aime pas trop systemd</li>
-                        <li>Régression Ansible v2</li>
-                        <li>Mais en étant patient ...</li>
-                    </ul>
-                </section>
+        <section>
+          <h2>Mais maintenant que ça marche</h2>
+          <ul>
+              <li>Besoin de diffuser</li>
+              <li>En prérequis : faire quelques tests</li>
+              <li>Et si on utilisait Docker ?</li>
+          </ul>
+          <img src='images/il_faudrait_versionner.gif' width="300" style="float:right" />
+        </section>
 
-                <section>
-                    <h2>Ça marche !</h2>
-                    <img src='images/homer_woohoo.png' />
-                </section>
+        <section>
+          <h2>Début d'utilisation de Docker</h2>
 
-                <section>
-                    <h2>Et si on mixait les deux ?</h2>
-                    <img src='images/ansible_docker.png' />
-                </section>
+          <ul>
+            <li>Disclaimer</li>
 
-                <section>
-                    <h2>La démarche</h2>
-                      <ul>
-                          <li>Construction des images Docker avec Ansible</li>
-                          <li>Instantiation des containers avec Ansible</li>
-                          <li>Enchaînement des opérations à l'aide d'Ansible</li>
-                      </ul>
-                </section>
+            <li>Comment s'y connecter
+              <ul>
+                <li>connecteur natif sous Ansible v2</li>
+              </ul>
+            </li>
+            <li>Les difficultés
+              <ul>
+                <li>Les containers doivent être démarré</li>
+                <li>Docker n'aime pas systemd</li>
+                <li>Ansible n'aime pas systemd</li>
+                <li>Et moi non plus :)</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
 
-                <section>
-                    <h2>Et ça marche !</h2>
-                    <img src='images/homer_woohoo.png' />
-                </section>
+        <section>
+          <h2>Résultat des premiers tests ...</h2>
+          <img src='images/test_non_reg.gif' />
+        </section>
 
-                <section>
-                    <h2>Plusieurs possibilités</h2>
-                      <ul>
-                          <li>Recyclage playbooks</li>
-                          <li>Connecteur Docker natif Ansible v2</li>
-                      </ul>
-                </section>
+        <section>
+          <h2>On corrige ...</h2>
 
-                <section>
-                    <h2>Question autour de Docker</h2>
-                      <ul>
-                          <li>Mais pas vraiment prêt</li>
-                          <li>Début d'implémentation avec Dockerfile + shell</li>
-                          <li>En gros, il faut tout refaire</li>
-                      </ul>
-                </section>
+          <ul>
+              <li>Les problèmes systemd</li>
+              <li>Régression Ansible v2</li>
+              <li>Mais en étant patient ...</li>
+          </ul>
+        </section>
 
-                <section>
-                    <h2>Rajoutez Jenkins et vous obtenez ...</h2>
-                    <img src='images/continuous_delivry.gif' />
-                </section>
+        <section>
+          <h2>Ça marche !</h2>
+        </section>
 
-                <section>
-                    <h2>Retours sur l'utilisation de Docker</h2>
-                      <ul>
-                          <li>Ne remplace pas la virtualisation</li>
-                          <li>systemd n'est pas ton ami</li>
-                          <li>Peut demander quelques adaptations</li>
-                      </ul>
-                </section>
+        <section>
+          <h2>Démo</h2>
+          <ul>
+            <li>Création container docker</li>
+            <li>Lancement de playbook</li>
+          </ul>
+        </section>
 
-                <section>
-                    <h2>Quelques trucs pratiques</h2>
-                      <ul>
-                          <li>Simplicité construction des images</li>
-                          <li>Docker compose</li>
-                          <li>réduction des temps de déploiement</li>
-                      </ul>
-                </section>
+        <section>
+          <h2>Et si on mixait les deux ?</h2>
+          <img src='images/ansible_docker.png' />
+        </section>
 
-                <section>
-                    <h2>Démo</h2>
-                      <ul>
-                          <li>Construction des images docker par Dockerfile</li>
-                          <li>Docker compose vs Playbook Ansible</li>
-                          <li>Exemple de répartition de charge</li>
-                      </ul>
-                </section>
+        <section>
+          <h2>La démarche</h2>
+          <h4>Ansible va nous aider dans :</h4>
+          <ul>
+            <li>La construction des images Docker</li>
+            <li>Lancement des containers</li>
+            <li>Enchaînement des opérations</li>
+          </ul>
+        </section>
 
-            </div>
+        <section>
+          <h2>Retours sur l'utilisation de Docker</h2>
+          <ul>
+              <li>Ne remplace pas la virtualisation</li>
+              <li>systemd n'est pas ton ami</li>
+              <li>Peut demander quelques adaptations</li>
+          </ul>
+        </section>
 
-        </div>
+        <section>
+          <h2>Quelques trucs pratiques</h2>
+          <ul>
+              <li>Simplicité construction des images</li>
+              <li>Docker compose</li>
+              <li>Réduction des temps de déploiement</li>
+          </ul>
+        </section>
 
-        <script src="../reveal/lib/js/head.min.js"></script>
-        <script src="../reveal/js/reveal.js"></script>
+        <section>
+          <h2>Démo</h2>
+            <ul>
+                <li>Construction des images docker par Dockerfile</li>
+                <li>Docker compose vs Playbook Ansible</li>
+                <li>Exemple de répartition de charge</li>
+            </ul>
+        </section>
 
-        <script>
+      </div>
 
-            // Full list of configuration options available at:
-            // https://github.com/hakimel/reveal.js#configuration
-            Reveal.initialize({
-                controls: true,
-                progress: true,
-                history: true,
-                center: true,
+    </div>
 
-                transition: 'convex', // none/fade/slide/convex/concave/zoom
+    <script src="../reveal/lib/js/head.min.js"></script>
+    <script src="../reveal/js/reveal.js"></script>
 
-                // Optional reveal.js plugins
-                dependencies: [
-                    { src: '../reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-                    { src: '../reveal/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-                    { src: '../reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-                    { src: '../reveal/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
-                    { src: '../reveal/plugin/zoom-js/zoom.js', async: true },
-                    { src: '../reveal/plugin/notes/notes.js', async: true }
-                ]
-            });
+    <script>
 
-        </script>
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+          controls: true,
+          progress: true,
+          history: true,
+          center: true,
 
-    </body>
+          transition: 'convex', // none/fade/slide/convex/concave/zoom
+
+          // Optional reveal.js plugins
+          dependencies: [
+              { src: '../reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+              { src: '../reveal/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+              { src: '../reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+              { src: '../reveal/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+              { src: '../reveal/plugin/zoom-js/zoom.js', async: true },
+              { src: '../reveal/plugin/notes/notes.js', async: true }
+          ]
+      });
+
+    </script>
+
+  </body>
 </html>

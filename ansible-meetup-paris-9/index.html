@@ -118,15 +118,26 @@ user: name={{batch_user}} group={{batch_group}} createhome=yes
 
         <section>
           <h2>Démo Oracle</h2>
-          <ul>
-            <li>Job unitaire
-              <ul>
-                <li>Création d'un tablespace</li>
-                <li>Création d'un schéma de BDD</li>
-              </ul>
-            </li>
-            <li>Lancement d'un multi job dans Jenkins avec import</li>
-          </ul>
+          <section>
+            <h4>Job unitaire</h4>
+            <ul>
+              <li>Création des tablespaces</li>
+              <li>Création du schéma de BDD</li>
+            </ul>
+          <pre><code class=shell contenteditable data-trim >
+./better-call-ansible.sh DOCKER/ERDF/DEV/DEV1 -e app_name=efluid \
+    playbooks/common/oracle-tablespace.yml \
+    playbooks/common/oracle-users.yml
+</code></pre>
+          </section>
+          <section>
+            <h4>Lancement d'un import</h4>
+          <pre><code class=shell contenteditable data-trim >
+./better-call-ansible.sh DOCKER/ERDF/DEV/DEV1 \
+    -e app_name=efluid -e oracle_backup_path=$PWD/export.tar.gz \
+    playbooks/common/import-db.yml
+</code></pre>
+          </section>
         </section>
 
         <section>
@@ -148,8 +159,6 @@ user: name={{batch_user}} group={{batch_group}} createhome=yes
           <h2>Début d'utilisation de Docker</h2>
 
           <ul>
-            <li>Disclaimer</li>
-
             <li>Comment s'y connecter
               <ul>
                 <li>connecteur natif sous Ansible v2</li>
@@ -187,25 +196,22 @@ user: name={{batch_user}} group={{batch_group}} createhome=yes
 
         <section>
           <h2>Démo</h2>
-          <ul>
-            <li>Création container docker</li>
-            <li>Lancement de playbook</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2>Et si on mixait les deux ?</h2>
-          <img src='images/ansible_docker.png' />
-        </section>
-
-        <section>
-          <h2>La démarche</h2>
-          <h4>Ansible va nous aider dans :</h4>
-          <ul>
-            <li>La construction des images Docker</li>
-            <li>Lancement des containers</li>
-            <li>Enchaînement des opérations</li>
-          </ul>
+          <section>
+            <h4>Création container docker</h4>
+            <pre><code class=shell contenteditable data-trim >
+./better-call-ansible.sh DOCKER/ERDF/DEV/DEV1 \
+    playbooks/socle/delete-docker-plateform.yml
+./better-call-ansible.sh DOCKER/ERDF/DEV/DEV1 \
+    playbooks/socle/create-docker-plateform.yml
+</code></pre>
+          </section>
+          <section>
+            <h4>Installation de WebLogic</h4>
+            <pre><code class=shell contenteditable data-trim >
+./better-call-ansible.sh DOCKER/ERDF/DEV/DEV1 \
+    playbooks/common/weblogic.yml -e app_name=efluid
+</code></pre>
+          </section>
         </section>
 
         <section>
@@ -218,21 +224,41 @@ user: name={{batch_user}} group={{batch_group}} createhome=yes
         </section>
 
         <section>
-          <h2>Quelques trucs pratiques</h2>
-          <ul>
-              <li>Simplicité construction des images</li>
-              <li>Docker compose</li>
-              <li>Réduction des temps de déploiement</li>
-          </ul>
+          <h2>Travaux en cours</h2>
+          <h4>Mixer les deux outils</h4>
+          <img src='images/ansible_docker.png' />
         </section>
 
         <section>
-          <h2>Démo</h2>
+          <h2>La démarche</h2>
+          <section>
+            <h4>Docker pour :</h4>
             <ul>
-                <li>Construction des images docker par Dockerfile</li>
-                <li>Docker compose vs Playbook Ansible</li>
-                <li>Exemple de répartition de charge</li>
+              <li>La facilité de création d'environnement</li>
+              <li>La réduction des temps de déploiement</li>
             </ul>
+          </section>
+
+          <section>
+            <h4>Ansible va nous aider dans :</h4>
+            <ul>
+              <li>Création / lancement des containers</li>
+              <li>Enchaînement des opérations</li>
+            </ul>
+          </section>
+        </section>
+
+        <section>
+          <h2>En conclusion</h2>
+          <ul>
+            <li>Docker demande des adaptations</li>
+            <li>Ansible n'a pas de contrainte
+              <ul>
+                <li>Gére l'infra classique</li>
+                <li>Mais également du docker !</li>
+              </ul>
+            </li>
+          </ul>
         </section>
 
       </div>

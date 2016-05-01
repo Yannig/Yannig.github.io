@@ -71,7 +71,7 @@
           <h4>Ansible et Jenkins depuis 1 an</h4>
           <ul>
               <li>Déploiement d'application J2E</li>
-              <li>Gestion de la base Oracle</li>
+              <li>Gestion de la BDD</li>
               <li>Gestion exploitation</li>
           </ul>
         </section>
@@ -82,10 +82,10 @@
 ---
 
 - name: "Création du groupe batch"
-group: name={{batch_group}}
+  group: name={{batch_group}}
 
 - name: "Création du user batch"
-user: name={{batch_user}} group={{batch_group}} createhome=yes
+  user: name={{batch_user}} group={{batch_group}} createhome=yes
           </code></pre>
         </section>
 
@@ -112,32 +112,21 @@ user: name={{batch_user}} group={{batch_group}} createhome=yes
           <ul>
               <li>Réduire la complexité des inventaires</li>
               <li>Reprise des valeurs dans des rôles spécifiques</li>
-              <li>Job d'enchaînement</li>
+              <li>Jobs d'enchaînements sous Jenkins</li>
           </ul>
         </section>
 
         <section>
           <h2>Démo Oracle</h2>
-          <section>
-            <h4>Job unitaire</h4>
-            <ul>
-              <li>Création des tablespaces</li>
-              <li>Création du schéma de BDD</li>
-            </ul>
+          <ul>
+            <li>Création des tablespaces</li>
+            <li>Création du schéma de BDD</li>
+          </ul>
           <pre><code class=shell contenteditable data-trim >
 ./better-call-ansible.sh DOCKER/ERDF/DEV/DEV1 -e app_name=efluid \
     playbooks/common/oracle-tablespace.yml \
     playbooks/common/oracle-users.yml
 </code></pre>
-          </section>
-          <section>
-            <h4>Lancement d'un import</h4>
-          <pre><code class=shell contenteditable data-trim >
-./better-call-ansible.sh DOCKER/ERDF/DEV/DEV1 \
-    -e app_name=efluid -e oracle_backup_path=$PWD/export.tar.gz \
-    playbooks/common/import-db.yml
-</code></pre>
-          </section>
         </section>
 
         <section>
@@ -159,67 +148,66 @@ user: name={{batch_user}} group={{batch_group}} createhome=yes
           <h2>Début d'utilisation de Docker</h2>
 
           <ul>
-            <li>Comment s'y connecter
+            <li>Comment s'y connecter ?
               <ul>
-                <li>connecteur natif sous Ansible v2</li>
-              </ul>
-            </li>
-            <li>Les difficultés
-              <ul>
-                <li>Les containers doivent être démarré</li>
-                <li>Docker n'aime pas systemd</li>
-                <li>Ansible n'aime pas systemd</li>
-                <li>Et moi non plus :)</li>
+                <li>En lançant un démon SSH ?</li>
+                <li>Mieux : connecteur natif sous Ansible v2 !</li>
               </ul>
             </li>
           </ul>
         </section>
 
         <section>
-          <h2>Résultat des premiers tests ...</h2>
-          <img src='images/test_non_reg.gif' />
+          <h2>Les problèmes Dockers</h2>
+          <section>
+            <h4>Les triviaux</h4>
+            <ul>
+              <li>Le container doit "tourner"
+                <pre>tail -f /dev/null ou /usr/lib/systemd/systemd</pre>
+              </li>
+              <li>Attention saturation des FS</li>
+            </ul>
+          </section>
+          <section>
+            <h4>Un peu plus drôle</h4>
+            <ul>
+              <li>Problème drivers storage ubuntu
+                <pre>yum install httpd => cpio: cap_set_file</pre></li>
+              <li>Utilisation de <b>/var/lib/docker</b> sous btrfs</li>
+            </ul>
+          </section>
+          <section>
+            <h4>Les blagues de systemd</h4>
+            <ul>
+              <li>Erreurs D-Bus<pre>Failed to get D-Bus connection: Operation not permitted</pre>
+                <ul><li>Utilisation du mode privileged</li></ul>
+              </li>
+              <li>Si pas besoin des services, mode <a href='https://github.com/maci0/docker-systemd-unpriv'>unprivileged</a></li>
+            </ul>
+          </section>
         </section>
 
         <section>
-          <h2>On corrige ...</h2>
-
+          <h2>Démo mediawiki Part I</h2>
           <ul>
-              <li>Les problèmes systemd</li>
-              <li>Régression Ansible v2</li>
-              <li>Mais en étant patient ...</li>
+            <li>Création images + containers</li>
+            <li>Déploiement de MariaDB</li>
+            <li>Déploiement d'apache</li>
+            <li>Installation de mediawiki</li>
           </ul>
-        </section>
-
-        <section>
-          <h2>Ça marche !</h2>
-        </section>
-
-        <section>
-          <h2>Démo</h2>
-          <section>
-            <h4>Création container docker</h4>
-            <pre><code class=shell contenteditable data-trim >
-./better-call-ansible.sh DOCKER/ERDF/DEV/DEV1 \
-    playbooks/socle/delete-docker-plateform.yml
-./better-call-ansible.sh DOCKER/ERDF/DEV/DEV1 \
-    playbooks/socle/create-docker-plateform.yml
+          <pre><code class=shell contenteditable data-trim >
+ansible-playbook -i inventory playbooks/destroy-container.yml
+ansible-playbook -i inventory/single \
+                    playbooks/install-mediawiki.yml
 </code></pre>
-          </section>
-          <section>
-            <h4>Installation de WebLogic</h4>
-            <pre><code class=shell contenteditable data-trim >
-./better-call-ansible.sh DOCKER/ERDF/DEV/DEV1 \
-    playbooks/common/weblogic.yml -e app_name=efluid
-</code></pre>
-          </section>
         </section>
 
         <section>
           <h2>Retours sur l'utilisation de Docker</h2>
           <ul>
-              <li>Ne remplace pas la virtualisation</li>
-              <li>systemd n'est pas ton ami</li>
-              <li>Peut demander quelques adaptations</li>
+            <li>Ne remplace pas la virtualisation</li>
+            <li>systemd n'est pas ton ami</li>
+            <li>Peut demander quelques adaptations</li>
           </ul>
         </section>
 
@@ -249,6 +237,12 @@ user: name={{batch_user}} group={{batch_group}} createhome=yes
         </section>
 
         <section>
+          <h2>Démo mediawiki Part II</h2>
+          <h4>Ajout d'un load-balancer</h4>
+          <pre><code class=shell contenteditable data-trim >ansible-playbook -i inventory/load-balancer playbooks/install-mediawiki.yml</code></pre>
+        </section>
+
+        <section>
           <h2>En conclusion</h2>
           <ul>
             <li>Docker demande des adaptations</li>
@@ -256,6 +250,12 @@ user: name={{batch_user}} group={{batch_group}} createhome=yes
               <ul>
                 <li>Gére l'infra classique</li>
                 <li>Mais également du docker !</li>
+              </ul>
+            </li>
+            <li>La combinaison vous permettra
+              <ul>
+                <li>De dérouler vos déploiements (Ansible)</li>
+                <li>De réduire vos temps d'installation (Docker)</li>
               </ul>
             </li>
           </ul>

@@ -43,10 +43,17 @@
         <section data-background="#ffffff">
           <h1>Ansible Meetup</h1>
           <h4>Utilisation d'Ansible avec Docker</h4>
-          <img src="images/logo_ansible.png" height="160" />
-          <img src="images/docker.png" height="160" />
-          <p><small><a href="http://lesaventuresdeyannigdanslemondeit.blogspot.fr/">Yannig Perré</a> / <a href="https://twitter.com/YannigPerre">@cgi.com</a></small></p>
-          <img src="images/CGI_logo.png" width=160/>
+          <img src="images/logo_ansible.png" height="100" />
+          <img src="images/docker.png" height="100" />
+          <p style="vertical-align:middle">
+            <small>
+              <a href="http://lesaventuresdeyannigdanslemondeit.blogspot.fr/">Yannig Perré</a> /
+              <a href="https://twitter.com/YannigPerre">@cgi.com</a>
+            </small><br/>
+            <a href='https://twitter.com/YannigPerre'><img src="images/twitter-logo.png" width="40" /></a>
+            <a href='https://github.com/Yannig'><img src="images/github-icon.png" width="40" /></a>
+          </p>
+          <img src="images/CGI_logo.png" width=140/>
         </section>
 
         <section>
@@ -54,39 +61,27 @@
           <ul>
             <li>Administrateur système et Java</li>
             <li>Architecte applicatif/système</li>
+            <li>Quelques contributions Ansible</li>
           </ul>
         </section>
 
         <section data-background="#dddddd">
           <h2>Contexte de travail</h2>
           <ul>
-              <li>Applications 3 tiers classiques</li>
-              <li>Gestion d'infra</li>
-              <li>Divers briques</li>
+            <li>Applications 3 tiers classiques</li>
+            <li>Gestion d'infra</li>
+            <li>Divers briques</li>
           </ul>
         </section>
 
         <section>
-          <h2>Méthodologie de déploiement</h2>
-          <h4>Ansible et Jenkins depuis 1 an</h4>
+          <h2>Contexte de déploiement</h2>
           <ul>
-              <li>Déploiement d'application J2E</li>
-              <li>Gestion de la BDD</li>
-              <li>Gestion exploitation</li>
+            <li>Une équipe d'intégration</li>
+            <li>Installation hors production</li>
+            <li>Plusieurs clients/bunkers</li>
+            <li>Plusieurs intervenants</li>
           </ul>
-        </section>
-
-        <section data-background="#aaa">
-          <h2>Exemple de playbook</h2>
-          <pre><code class=YAML contenteditable data-trim >
----
-
-- name: "Création du groupe batch"
-  group: name={{batch_group}}
-
-- name: "Création du user batch"
-  user: name={{batch_user}} group={{batch_group}} createhome=yes
-          </code></pre>
         </section>
 
         <section>
@@ -100,58 +95,60 @@
             </li>
             <li>Mais dans les faits peu de temps gagné
               <ul>
-                <li>Nouvelles procédures</li>
-                <li>Déroulement toujours manuels des procédures</li>
+                <li>Déroulement manuels des enchaînements</li>
+                <li>Ajouts de nouvelles procédures</li>
+                <li>Complexité des inventaires</li>
               </ul>
             </li>
           </ul>
         </section>
 
         <section>
-          <h2>Refactoring en cours</h2>
+          <h2>Travaux d'améliorations</h2>
           <ul>
-              <li>Réduire la complexité des inventaires</li>
-              <li>Reprise des valeurs dans des rôles spécifiques</li>
-              <li>Jobs d'enchaînements sous Jenkins</li>
+            <li>Jobs d'enchaînements sous Jenkins</li>
+            <li>Réduire la complexité des inventaires
+              <ul>
+                <li>Réorganisation/simplication des inventaires</li>
+                <li>Réorganisation des équipes</li>
+              </ul>
+            </li>
           </ul>
         </section>
 
         <section>
-          <h2>Démo Oracle</h2>
-          <ul>
-            <li>Création des tablespaces</li>
-            <li>Création du schéma de BDD</li>
-          </ul>
-          <pre><code class=shell contenteditable data-trim >
-./better-call-ansible.sh DOCKER/ERDF/DEV/DEV1 -e app_name=efluid \
-    playbooks/common/oracle-tablespace.yml \
-    playbooks/common/oracle-users.yml
-</code></pre>
+          <h2>Réorganisation des équipes</h2>
+          <section>
+            <h4>Changement des interventions</h4>
+            <ul>
+              <li>Récupération des droits root</li>
+              <li>Suppression interventions clients</li>
+            </ul>
+          </section>
+          <section>
+            <h4>En bref, on fait sauter les silos</h4>
+            <img src="images/destruction.gif" />
+          </section>
         </section>
 
         <section>
-          <h2>Bref, ça marche bien !</h2>
-          <img src='images/its_all_working.gif' />
-        </section>
-
-        <section>
-          <h2>Mais maintenant que ça marche</h2>
+          <h2>Mais pour ça ...</h2>
           <ul>
-              <li>Besoin de diffuser</li>
-              <li>En prérequis : faire quelques tests</li>
-              <li>Et si on utilisait Docker ?</li>
+            <li>Besoin de diffuser auprès des clients/équipes</li>
+            <li>En prérequis : faire quelques tests</li>
+            <li>Et si on utilisait Docker ?</li>
           </ul>
-          <img src='images/il_faudrait_versionner.gif' width="300" style="float:right" />
         </section>
 
         <section>
           <h2>Début d'utilisation de Docker</h2>
-
+          <img src='images/docker.png' width=150 />
           <ul>
-            <li>Comment s'y connecter ?
+            <li>Facilité création container</li>
+            <li>Mais comment s'y connecter ?
               <ul>
-                <li>En lançant un démon SSH ?</li>
-                <li>Mieux : connecteur natif sous Ansible v2 !</li>
+                <li>Traditionnellement avec un démon SSH</li>
+                <li>Nouveauté v2 : connecteur natif !</li>
               </ul>
             </li>
           </ul>
@@ -162,10 +159,10 @@
           <section>
             <h4>Les triviaux</h4>
             <ul>
+              <li>Attention saturation des FS</li>
               <li>Le container doit "tourner"
                 <pre>tail -f /dev/null ou /usr/lib/systemd/systemd</pre>
               </li>
-              <li>Attention saturation des FS</li>
             </ul>
           </section>
           <section>
@@ -174,21 +171,27 @@
               <li>Problème drivers storage ubuntu
                 <pre>yum install httpd => cpio: cap_set_file</pre></li>
               <li>Utilisation de <b>/var/lib/docker</b> sous btrfs</li>
+              <li>Faire gaffe aux montées de versions</li>
             </ul>
           </section>
           <section>
             <h4>Les blagues de systemd</h4>
             <ul>
               <li>Erreurs D-Bus<pre>Failed to get D-Bus connection: Operation not permitted</pre>
-                <ul><li>Utilisation du mode privileged</li></ul>
-              </li>
-              <li>Si pas besoin des services, mode <a href='https://github.com/maci0/docker-systemd-unpriv'>unprivileged</a></li>
+              <li>Utilisation du mode privileged</li>
+              <li>Sinon, gestion dans les playbooks</li>
             </ul>
+          </section>
+          <section>
+            <img src='images/say-systemd.jpg' />
           </section>
         </section>
 
         <section>
           <h2>Démo mediawiki Part I</h2>
+          <img src='images/mediawiki-logo.png' width=100 />
+          <img src='images/apache-logo.png' width=100 />
+          <img src='images/maria-logo.png' width=100 />
           <ul>
             <li>Création images + containers</li>
             <li>Déploiement de MariaDB</li>
@@ -239,26 +242,39 @@ ansible-playbook -i inventory/single \
         <section>
           <h2>Démo mediawiki Part II</h2>
           <h4>Ajout d'un load-balancer</h4>
-          <pre><code class=shell contenteditable data-trim >ansible-playbook -i inventory/load-balancer playbooks/install-mediawiki.yml</code></pre>
+          <img src="images/haproxy-apache-mysql.png" />
+          <pre><code class=shell contenteditable data-trim >
+ansible-playbook -i inventory/load-balancer \
+                    playbooks/install-mediawiki.yml
+</code></pre>
         </section>
 
         <section>
           <h2>En conclusion</h2>
-          <ul>
-            <li>Docker demande des adaptations</li>
-            <li>Ansible n'a pas de contrainte
-              <ul>
-                <li>Gére l'infra classique</li>
-                <li>Mais également du docker !</li>
-              </ul>
-            </li>
-            <li>La combinaison vous permettra
-              <ul>
-                <li>De dérouler vos déploiements (Ansible)</li>
-                <li>De réduire vos temps d'installation (Docker)</li>
-              </ul>
-            </li>
-          </ul>
+          <section>
+            <h4>Faire attention aux impacts</h4>
+            <ul>
+              <li>Docker demande des adaptations</li>
+              <li>Ansible n'a pas de contrainte
+                <ul>
+                  <li>Gére l'infra classique</li>
+                  <li>Mais également du docker !</li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h4>La combinaison vous permettra</h4>
+            <ul>
+              <li>De dérouler vos déploiements (Ansible)</li>
+              <li>De réduire vos temps d'installation (Docker)</li>
+              <li>De gérer les environnements mixtes</li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <h2>Des questions ?</h2>
+          <img src='images/homer_woohoo.png' width=600 style="margin-top: 90px; margin-left: -850px; border: none;" />
         </section>
 
       </div>

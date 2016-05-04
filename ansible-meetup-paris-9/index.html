@@ -70,24 +70,75 @@
           <ul>
             <li>Applications 3 tiers classiques</li>
             <li>Gestion d'infra</li>
-            <li>Divers briques</li>
+            <li>Divers briques propriétaires</li>
           </ul>
         </section>
 
         <section>
-          <h2>Contexte de déploiement</h2>
+          <h2>Les briques en question</h2>
           <ul>
-            <li>Une équipe d'intégration</li>
+            <li>Du J2E (WebLogic, TomEE, Jonas)</li>
+            <li>Du serveur Oracle</li>
+            <li>Des serveurs Apaches, OpenLDAP</li>
+            <li>Et j'en passe</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Contexte d'utilisation d'Ansible</h2>
+          <ul>
+            <li>Une équipe d'IT + Archi</li>
             <li>Installation hors production</li>
             <li>Plusieurs clients/bunkers</li>
-            <li>Plusieurs intervenants</li>
+            <li>Provisionning classique</li>
           </ul>
+        </section>
+
+        <section>
+          <h2>Problèmes classiques</h2>
+          <ul>
+            <li>Pas de centralisation</li>
+            <li>Pas de convergence</li>
+            <li>Enchaînements manuels</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Mise en place</h2>
+          <img src='images/devops.png' />
         </section>
 
         <section>
           <h2>REX Ansible</h2>
           <section>
-            <h4>Gains</h4>
+            <h4>Proposition d'amélioration</h4>
+            <img src='images/logo_ansible.png' height=100 />
+            <img src='images/jenkins.png' height=100 />
+            <ul>
+              <li>Supprimer certains outils</li>
+              <li>Adoption d'Ansible</li>
+              <li>Lancement au travers de Jenkins</li>
+            </ul>
+          </section>
+          <section>
+            <h4>Déploiement par brique</h4>
+            <ul>
+              <li>La base de données</li>
+              <li>Le déploiement applicatif</li>
+              <li>Le serveur d'application</li>
+              <li>Généralisation au reste</li>
+            </ul>
+          </section>
+          <section>
+            <h4>Au niveau humain</h4>
+            <ul>
+              <li>Grosse rupture dans les habitudes</li>
+              <li>Priorités pas partagées</li>
+              <li>Manque de temps pour changer</li>
+            </ul>
+          </section>
+          <section>
+            <h4>Concernant les gains</h4>
             <ul>
               <li>Déploiement plus rapide</li>
               <li>Plus de sécurité au niveau des déploiements</li>
@@ -96,7 +147,7 @@
           <section>
             <h4>Mais dans les faits peu de temps gagné</h4>
             <ul>
-              <li>Déroulement manuels des enchaînements</li>
+              <li>Déroulement manuels des étapes</li>
               <li>Ajouts de nouvelles procédures</li>
               <li>Complexité des inventaires</li>
             </ul>
@@ -119,7 +170,7 @@
         <section>
           <h2>Réorganisation des équipes</h2>
           <section>
-            <h4>Changement des interventions</h4>
+            <h4>Changement des rôles</h4>
             <ul>
               <li>Récupération des droits root</li>
               <li>Suppression interventions clients</li>
@@ -127,7 +178,7 @@
           </section>
           <section>
             <h4>En bref, on fait sauter les silos</h4>
-            <img src="images/destruction.gif" />
+            <img src="images/destruction.gif" width=400 />
           </section>
         </section>
 
@@ -168,9 +219,9 @@
           <section>
             <h4>Un peu plus drôle</h4>
             <ul>
-              <li>Problème drivers storage ubuntu
+              <li>Problème drivers storage ubuntu (aufs)
                 <pre>yum install httpd => cpio: cap_set_file</pre></li>
-              <li>Utilisation de <b>/var/lib/docker</b> sous btrfs</li>
+              <li>Passage de <b>/var/lib/docker</b> sous btrfs</li>
               <li>Faire gaffe aux montées de versions</li>
             </ul>
           </section>
@@ -179,11 +230,10 @@
             <ul>
               <li>Erreurs D-Bus<pre>Failed to get D-Bus connection: Operation not permitted</pre>
               <li>Utilisation du mode privileged</li>
-              <li>Sinon, gestion dans les playbooks</li>
             </ul>
           </section>
           <section>
-            <img src='images/say-systemd.jpg' />
+            <img src='images/systemd-into-systemd.jpg' />
           </section>
         </section>
 
@@ -207,12 +257,19 @@ ansible-playbook -i inventory/single \
         </section>
 
         <section>
-          <h2>Retours sur l'utilisation de Docker</h2>
-          <ul>
-            <li>Ne remplace pas la virtualisation</li>
-            <li>systemd n'est pas ton ami</li>
-            <li>Peut demander quelques adaptations</li>
-          </ul>
+          <h2>Utilisation de Docker</h2>
+          <section>
+            <h4>Bien faire attention</h4>
+            <ul>
+              <li>Ne remplace pas la virtualisation</li>
+              <li>Peut demander quelques adaptations</li>
+              <li>systemd n'est pas ton ami</li>
+            </ul>
+          </section>
+          <section>
+            <h4>D'ailleurs pourquoi systemd est-il si méchant ?</h4>
+            <img src='images/systemd-everywhere.jpg' />
+          </section>
         </section>
 
         <section>

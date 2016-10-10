@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>Introduction à Linux</title>
+
+    <meta name="description" content="Introduction et installation d'une distribution Linux">
+    <meta name="author" content="Yannig Perré">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="../reveal/css/reveal.css">
+    <link rel="stylesheet" href="../reveal/css/theme/black.css" id="theme">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="../reveal/lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? '../reveal/css/print/pdf.css' : '../reveal/css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="../reveal/lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="reveal">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section data-background="#ffffff">
+          <h2>Introduction à Linux</h2>
+          <h4>Premier pas avec une distribution</h4>
+          <img src="images/linux.png" height="200" />
+          <p style="vertical-align:middle">
+            <small>
+              <a href="http://lesaventuresdeyannigdanslemondeit.blogspot.fr/">Yannig Perré</a> /
+              <a href="https://twitter.com/YannigPerre">Twitter</a>
+            </small><br/>
+            <a href='https://twitter.com/YannigPerre'><img src="images/twitter-logo.png" width="40" /></a>
+            <a href='https://github.com/Yannig'><img src="images/github-icon.png" width="40" /></a>
+          </p>
+        </section>
+
+        <section>
+          <h2>Ce que nous allons faire</h2>
+          <ul>
+            <li>Comment préparer une clé USB</li>
+            <li>Lancer une distribution USB</li>
+            <li>Pour aller plus loin</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Choisir sa distribution</h2>
+          <ul>
+            <li>Deux grandes familles : RedHat et Debian</li>
+            <li>RedHat : RHEL, CentOS et Fedora</li>
+            <li>Debian : debian, ubuntu et Linux mint</li>
+          </ul>
+          <img src="images/logo-redhat.png" height="100" /><img src="images/logo-debian.png" height="100" />
+        </section>
+
+        <section>
+          <h2>L'environnement graphique</h2>
+          <h4>Plusieurs options :</h4>
+          <ul>
+            <li>Gnome</li>
+            <li>KDE</li>
+            <li>XFCE</li>
+          </ul>
+          <br/>
+          <img src="images/logo-gnome.png" height="200" /><img src="images/logo-kde.png" height="200" /><img src="images/logo-xfce.png" height="200" />
+        </section>
+
+        <section>
+          <h2>Type de besoin</h2>
+          <ul>
+            <li>Serveur => RHEL, CentOS ou Debian</li>
+            <li>Bureau => Ubuntu, Linux mint ou Fedora</li>
+            <li>Recovery => SystemRescueCd</li>
+          </ul>
+          <br/>
+          <img src="images/logo-linux-mint.png" height="200" /><img src="images/logo-fedora.png" height="200" />
+        </section>
+
+        <section>
+          <h2>Télécharger sa distribution</h2>
+          <ul>
+            <li>Debian like => mint</li>
+            <li>RedHat => CentOS pour la stabilité</li>
+            <li>Fouiller sur le site pour trouver son bonheur</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Préparer une clé USB</h2>
+          <ul>
+            <li>Installation de Lili USB Creator</li>
+            <li>Récupérer une distribution</li>
+            <li>Pour aller plus loin</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Des questions ?</h2>
+          <img src='images/homer_woohoo.png' width=600 style="margin-top: 90px; margin-left: -850px; border: none;" />
+        </section>
+
+      </div>
+
+    </div>
+
+    <script src="../reveal/lib/js/head.min.js"></script>
+    <script src="../reveal/js/reveal.js"></script>
+
+    <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+          controls: true,
+          progress: true,
+          history: true,
+          center: true,
+
+          transition: 'convex', // none/fade/slide/convex/concave/zoom
+
+          // Optional reveal.js plugins
+          dependencies: [
+              { src: '../reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+              { src: '../reveal/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+              { src: '../reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+              { src: '../reveal/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+              { src: '../reveal/plugin/zoom-js/zoom.js', async: true },
+              { src: '../reveal/plugin/notes/notes.js', async: true }
+          ]
+      });
+
+    </script>
+
+  </body>
+</html>

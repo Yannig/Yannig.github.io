@@ -80,6 +80,12 @@ Ici, découverte de notre environnement graphique.
 
    Gestion du système.
 
+Point important : une simple installation vous permet de disposer directement de pleins d'outils prêt à l'emploi :
+
+- Un navigateur Internet avec Firefox ;
+- Un lecteur de vidéo multimédia ;
+- Des gestionnaires de documents bureautiques.
+
 Installation de packages supplémentaires
 ----------------------------------------
 

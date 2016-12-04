@@ -6,9 +6,7 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-   creation-cle-usb
-   installation-linux-mint-xfce-18
-   decouverte-bureau-xfce
+   introduction
 
 
 Index de recherche

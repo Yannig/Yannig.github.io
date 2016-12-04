@@ -14,6 +14,11 @@ Le PC portable devrait alors afficher un logo de Linux Mint. Surtout ne pas lais
 
 Dans le menu qui apparaît, sélectionner l'option **Fail safe** qui désactivera certaines options au démarrage de Linux.
 
+Installation de Linux
+---------------------
+
+À partir de maintenant, il est possible d'installer Linux sur notre machine. Pour se faire, suivre la procédure suivante : :ref:`installation-linux-mint-xfce-18`.
+
 Découverte du bureau
 --------------------
 

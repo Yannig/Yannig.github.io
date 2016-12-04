@@ -6,7 +6,8 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-   introduction
+   installation-linux
+   decouverte-linux
 
 
 Index de recherche

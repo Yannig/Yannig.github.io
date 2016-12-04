@@ -1,3 +1,5 @@
+.. _installation-linux-mint-xfce-18:
+
 Installation de Linux Mint 18
 =============================
 

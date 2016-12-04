@@ -1,5 +1,5 @@
-Introduction à Linux
-====================
+Installation de Linux
+=====================
 
 Contents:
 
@@ -9,4 +9,3 @@ Contents:
    creation-cle-usb
    demarrage-via-cle-usb
    installation-linux-mint-xfce-18
-   decouverte-bureau-xfce

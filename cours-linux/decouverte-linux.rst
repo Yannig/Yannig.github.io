@@ -7,5 +7,9 @@ Contents:
    :maxdepth: 2
 
    decouverte-linux/decouverte-bureau-xfce
-   decouverte-linux/fonctionnement-de-linux
+   decouverte-linux/partitions-linux
+   decouverte-linux/quelques-repertoires-importants
+   decouverte-linux/gestion-fichiers
+
+
 

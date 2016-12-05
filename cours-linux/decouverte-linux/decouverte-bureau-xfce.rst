@@ -115,3 +115,12 @@ Ci-dessous un exemple d'installation de l'émulateur zsnes (émulateur SuperNES)
    :width: 600
 
    Nouvelle catégorie dans le menu de démarrage.
+
+Ouverture de fichier compressé
+------------------------------
+
+.. figure:: utilisation/18-ouverture-zip.png
+   :align: right
+   :width: 500
+
+   Ouverture d'un zip depuis le gestionnaire de fichier.

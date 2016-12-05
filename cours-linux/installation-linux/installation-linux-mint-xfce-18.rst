@@ -35,6 +35,29 @@ Lancement de l'installation
 
    Comment installer les fichiers du système sur votre ordinateur.
 
+.. warning:: Dans cette partie, il faut faire le choix **Autre chose**.
+
+Dans l'écran suivant :
+
+- Créer une partition / sur le disque **/dev/sdc** et lui affecter la totalité de la volumétrie ;
+- Changer la valeur du champ ***Périphérique où sera installé le programme de démarrage*** et passer sur le disque **/dev/sdc**.
+
+.. figure:: installation-linux-mint-xfce-18/03-z-creation-partition-principale.png
+   :width: 500
+
+   Création partition /
+
+Cliquer sur le bouton **OK** puis sur le bouton **Installer maintenant**.
+
+Un nouvel écran apparaît vous indiquant les modifications qui vont être réalisées.
+
+.. note:: Jusqu'à maintenant l'ordinateur n'a subit aucune modification.
+
+.. figure:: installation-linux-mint-xfce-18/03-zz-confirmation-creation-partitions.png
+   :width: 500
+
+   Confirmation de la modification des partitions du disque.
+
 .. figure:: installation-linux-mint-xfce-18/04-fuseau-horaire.png
    :width: 500
 

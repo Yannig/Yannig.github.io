@@ -8,6 +8,8 @@ Répertoire     Fonction
 ============  =====================================================================
 /              Répertoire racine de la distribution
 ------------  ---------------------------------------------------------------------
+/etc           Répertoire contenant tous les fichiers de configuration
+------------  ---------------------------------------------------------------------
 /bin           Utilitaire de base (ls, rm)
 ------------  ---------------------------------------------------------------------
 /sbin          Idem mais pour l'utilisateur root
@@ -15,4 +17,8 @@ Répertoire     Fonction
 /usr/bin       Utilitaire évolué (LibreOffice, Firefox etc.)
 ------------  ---------------------------------------------------------------------
 /usr/sbin      Idem pour l'utilisateur root
+------------  ---------------------------------------------------------------------
+/var           Espace de stockage des programmes systèmes
+------------  ---------------------------------------------------------------------
+/home          Répertoire de stockage des fichiers utilisateurs
 ============  =====================================================================

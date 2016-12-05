@@ -120,7 +120,6 @@ Ouverture de fichier compressé
 ------------------------------
 
 .. figure:: utilisation/18-ouverture-zip.png
-   :align: right
-   :width: 500
+   :width: 600
 
    Ouverture d'un zip depuis le gestionnaire de fichier.

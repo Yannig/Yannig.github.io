@@ -37,7 +37,6 @@ Les partitions sont montées automatiquement au démarrage grâce au contenu du 
     UUID=a337176a-5cae-44b3-82e2-0d9052821927 /               ext4    errors=remount-ro 0       1
     # swap was on /dev/sda5 during installation
     UUID=797fe69c-2ba2-442f-9eda-2aa836ff6162 none            swap    sw              0       0
-    /dev/sdb /var/lib/docker btrfs   defaults        0       0
 
 .. note:: Les distributions modernes n'utilisent pas directement le nom de la partition (ex : /dev/sda1) mais son identifiant unique (UUID). Cet identifiant peut se retrouver en regardant le contenu du répertoire **/dev/disk/by-uuid**
 

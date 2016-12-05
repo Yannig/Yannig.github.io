@@ -13,16 +13,13 @@ Lancement de Lili USB
 
 Dans le menu, lancer Lili USB :
 
-.. figure:: cle-usb/lancement-lili-usb.png
+.. image:: cle-usb/lancement-lili-usb.png
    :width: 400
-
-   Lancement de Lili USB
-
-.. figure:: cle-usb/fenetre-lili-usb.png
-   :width: 200
    :align: left
 
-   Fenêtre principale de Lili USB
+.. image:: cle-usb/fenetre-lili-usb.png
+   :width: 200
+   :align: left
 
 Dans la fenêtre de Lili, renseigner les champs suivants :
 
@@ -33,3 +30,4 @@ Dans la fenêtre de Lili, renseigner les champs suivants :
 - Enfin cliquer sur l'éclair pour lancer la préparation de la clé.
 
 Ceci fait, nous allons pouvoir lancer la clé USB live sur notre PC.
+

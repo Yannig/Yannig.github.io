@@ -7,3 +7,5 @@ Contents:
    :maxdepth: 2
 
    decouverte-linux/decouverte-bureau-xfce
+   decouverte-linux/fonctionnement-de-linux
+

@@ -11,5 +11,3 @@ Contents:
    decouverte-linux/quelques-repertoires-importants
    decouverte-linux/gestion-fichiers
 
-
-

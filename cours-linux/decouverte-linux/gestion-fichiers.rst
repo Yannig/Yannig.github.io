@@ -89,11 +89,80 @@ Gestion des droits
 
 Nous avons appris à manipuler les fichiers. Nous allons maintenant voir comment attribuer des droits ou les retirer dans le cas où vous ne voudriez pas les laisser en accès libre.
 
+Changement des droits
+~~~~~~~~~~~~~~~~~~~~~
+
+Les droits sur un fichier peuvent se voir sur la partie droite de la commande **ls -l**. Chaque colonne va indiquer les droits pour les éléments suivants :
+
+- Le type de fichier (d pour dossier et - pour un fichier) ;
+- Les droits du propriétaire sur 3 caractères ;
+- Les droits du groupe sur 3 caractères ;
+- Les droits pour les autres également sur 3 caractères.
+
+Chaque séquence représentent les droits sous la forme des lettres rwx (pour read/write/exec). La présence d'un tiret marque l'absence de ce droit. Ces droits peuvent aussi être appliqué en utilisant :
+
+- Une représentation octale avec des chiffres de 0 à 7 ;
+- Soit une valeur par ajout/retrait de droit.
+
+Ci-dessous quelques exemples de valeur :
+
+=================  ==========================  ==============================================================================
+Exemple de droit    Valeur vu avec **ls -l**    Droits correspondants
+=================  ==========================  ==============================================================================
+777                 rwxrwxrwx                   Tous les droits à tous le monde
+-----------------  --------------------------  ------------------------------------------------------------------------------
+664                 rw-rw-r--                   Droit lecture/écriture pour user et groupe et droit lecture pour les autres
+-----------------  --------------------------  ------------------------------------------------------------------------------
+750                 rwxr-x---                   Execution/lecture pour utilisateur et groupe, droit écriture pour le
+                                                propriétaire. Rien pour les autres
+-----------------  --------------------------  ------------------------------------------------------------------------------
+u+rx                r?x??????                   Ajout des droits lecture/exécution pour le propriétaire en plus de ceux
+                                                existants
+-----------------  --------------------------  ------------------------------------------------------------------------------
+g+rx,o+r            ???r?xr??                   Ajout des droits lecture pour tous le groupe et les autres et droits
+                                                d'exécution sur le groupe.
+-----------------  --------------------------  ------------------------------------------------------------------------------
+a+rx                r?xr?xr?x                   Ajout des droits lecture/exécution pour tous en plus de ceux existants
+=================  ==========================  ==============================================================================
+
+.. note:: Il existe d'autre type de droit (u+s ou o+t) très spécifique au système que nous ne verrons pas ici.
+
+Ce changement de droit se fait à l'aide de l'outil **chmod** :
+
+.. code-block:: bash
+
+    # Attribution droit en lecture à tous sur le fichier /tmp/test
+    chmod a+r /tmp/test
+
 Gestion propriétaire
 ~~~~~~~~~~~~~~~~~~~~
 
-Pour connaître le propriétaire d'un fichier, il faut utiliser la commande **ls -l**. Afin de changer le propriétaire, il est possible d'utiliser les commandes suivantes :
+L'affichage du propriétaire d'un fichier, se fait là encore avec la commande **ls -l**. Afin de changer le propriétaire, il est possible d'utiliser les commandes suivantes :
 
-- chown NOM_UTILISATEUR NOM_FICHIER : change le propriétaire du fichier ;
-- chgrp NOM_GROUPE NOM_FICHIER : change le groupe propriétaire d'un fichier.
+- chown UTILISATEUR NOM_FICHIER : change le propriétaire du fichier ;
+- chgrp GROUPE NOM_FICHIER : change le groupe propriétaire d'un fichier.
 
+Exercice sur la gestion des fichiers
+------------------------------------
+
+========================================================================  =========================
+Opération                                                                  Commande
+========================================================================  =========================
+Créer un répertoire **/tmp/test**                                          ``mkdir /tmp/test``
+------------------------------------------------------------------------  -------------------------
+Recopier le fichier **/etc/debian_version** dans le répertoire /tmp/test   ``cp /etc/debian_version /tmp/test/.``
+------------------------------------------------------------------------  -------------------------
+Afficher son contenu                                                       ``cat /tmp/test/debian_version``
+------------------------------------------------------------------------  -------------------------
+Afficher les informations sur ce fichier                                   ``ls -l /tmp/test/debian_version``
+------------------------------------------------------------------------  -------------------------
+Attribuer des droits en écriture à tous                                    ``chmod a+x /tmp/test/debian_version``
+------------------------------------------------------------------------  -------------------------
+Afficher les informations sur ce fichier                                   ``ls -l /tmp/test/debian_version``
+------------------------------------------------------------------------  -------------------------
+Essayer de supprimer le répertoire **/tmp/test**                           ``rmdir /tmp/test``
+------------------------------------------------------------------------  -------------------------
+Supprimer le fichier **/tmp/test/debian_version**                          ``rm /tmp/test/debian_version``
+------------------------------------------------------------------------  -------------------------
+Réessayer de supprimer le répertoire **/tmp/test**                         ``rmdir /tmp/test``
+========================================================================  =========================

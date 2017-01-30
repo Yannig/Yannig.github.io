@@ -9,6 +9,7 @@ Contents:
    installation-linux
    decouverte-linux
    decouverte-ligne-de-commande-linux
+   decouverte-du-shell-linux
 
 
 Index de recherche

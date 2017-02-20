@@ -10,3 +10,4 @@ Contents:
    decouverte-linux/quelques-repertoires-importants
    decouverte-linux/gestion-fichiers
    decouverte-linux/corrections-exercice
+   decouverte-linux/terminal-unix-resume

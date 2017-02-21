@@ -65,7 +65,7 @@ En plus des opérations classiques d'affectation, il est possible de vérifier l
     # Affectation
     a=1
     # Est-ce que a est plus grand que 0 ?
-    if [ $a -gt 0 ]; then
+    if [ "$a" -gt 0 ]; then
       echo "a est plus grand que 0"
     fi
 
@@ -117,7 +117,7 @@ Les mots clés **while** et **for** permettent de gérer des boucles d'exécutio
     # Boucle sur saisie de l'utilisateur
     a=""
 
-    while [ $a = "" ]
+    while [ "$a" = "" ]
     do
       echo "Merci de saisir quelque chose"
       read a

@@ -10,6 +10,8 @@ Contents:
    decouverte-linux
    decouverte-ligne-de-commande-linux
    decouverte-du-shell-linux
+   administration
+   multimedia
 
 
 Index de recherche

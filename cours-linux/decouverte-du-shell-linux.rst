@@ -6,5 +6,6 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-   decouverte-linux/introduction-programmation-shell
-   decouverte-linux/corrections-exercice-shell
+   shell/introduction-programmation
+   shell/corrections-exercice
+   shell/creation-timelapse

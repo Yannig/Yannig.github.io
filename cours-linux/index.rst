@@ -12,6 +12,7 @@ Contents:
    decouverte-du-shell-linux
    administration
    multimedia
+   python
 
 
 Index de recherche

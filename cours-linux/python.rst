@@ -8,4 +8,7 @@ Contents:
 
    python/initiation
    python/exercice-bissextile
-
+   python/tableaux
+   python/fichiers
+   python/csv
+   python/objets

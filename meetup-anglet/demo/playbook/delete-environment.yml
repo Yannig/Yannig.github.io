@@ -1,0 +1,19 @@
+---
+
+- name: "Delete environment"
+  hosts: "all"
+  gather_facts: no
+  vars:
+    ansible_connection: "local"
+  tasks:
+    - name: "Delete container"
+      docker_container:
+        name: "{{inventory_hostname}}"
+        image: "centos/systemd"
+        force_kill: yes
+        state: absent
+    - name: "Delete network"
+      docker_network:
+        name: "{{docker_network_name}}"
+        state: absent
+      run_once: yes

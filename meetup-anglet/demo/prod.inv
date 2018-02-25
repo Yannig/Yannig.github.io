@@ -1,0 +1,9 @@
+[batch]
+prod-batch[1:2]
+
+[tomcat]
+prod-tomcat[1:4]
+
+[all:vars]
+ansible_connection=docker
+docker_network_name=prod.meetup

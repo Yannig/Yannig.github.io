@@ -1,0 +1,12 @@
+---
+
+- name: "Deploy sample application"
+  hosts: "tomcat"
+  gather_facts: no
+  tasks:
+    - name: "Deploy application"
+      copy:
+        src: "sample.war"
+        dest: "/opt/tomcat/apache-tomcat-9.0.5/webapps/sample.war"
+        owner: "tomcat"
+        group: "tomcat"

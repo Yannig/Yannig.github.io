@@ -1,22 +1,5 @@
-.. Meetup IAC documentation master file, created by
-   sphinx-quickstart on Tue Feb  6 09:05:00 2018.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
-Welcome to Meetup IAC's documentation!
-======================================
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
-
-.. L'adoption de l'agilité change le développement des applications. Une bonne pratique est mettre en place certains outils permettant l'accéleration du déploiement. En effet, rien ne sert de sortir une application toutes les 3 semaines si vous n'êtes pas en mesure de réaliser son installation dans le même temps.
-.. 
-.. Une première étape peut consister à mettre en oeuvre un pipeline de déploiement continue sur des environnements existants. Cette facilité de déploiement amène souvent l'ajout de nouveaux environnements (pour pouvoir tester la robustesse, la performance etc.). Ces nouveaux environnements, si vous n'y prenez pas garde peuvent entrainer une charge de travail conséquente ainsi que d'autres problèmes (versions applicative obsoléte, cluster de machine, configuration différente).
-.. 
-.. L'IaC peut répondre à ce type de problématique en appliquant les mêmes méthodes que pour du code. Vous stockez dans un gestionnaire de code source la description de votre infrastructure, vous faîtes appel à un automate et ce dernier se charge d'appliquer cette description.
-.. 
-
+Meetup IAC Anglet
+=================
 
 .. revealjs:: Meetup Agile Pays-Basque
    :subtitle: Infrastructure as Code
@@ -38,20 +21,46 @@ Welcome to Meetup IAC's documentation!
       :height: 40
 
 .. revealjs:: Infrastructure as Code
+   :data-background: #052535
 
-  - Un petit peu de contexte
-  - Qu'est ce qu'apporte l'agilité
-  - Mutation qui peuvent en découler
-  - Mise en application
+   .. image:: images/infrastructure-as-code.png
 
-.. revealjs:: Un petit peu de contexte
+   .. rv_note::
+
+      - Changements introduits par l'agilité
+      - Qu'est ce qu'apporte l'agilité
+      - Mutation qui peuvent en découler
+      - Mise en application
+
+.. revealjs:: Principe agilité
    :data-background: #ffffff
 
-   Manuel d'installation batchs Java
+   .. image:: images/principe-agilite.png
+
+.. revealjs:: Ce qui se traduit par ...
+
+    - Augmentation fréquence livraisons
+    - Intégration continue
+    - Déploiement continue
+    - Augmentation environnements
+
+.. revealjs:: Scalabilité sysadmin
+
+   .. image:: images/sysadmin-no-root-access.jpg
+
+   .. rv_note::
+
+    - Où les trouver
+    - Les former
+    - Vite, faisons des procédures
+
+.. revealjs:: Document d'installation
+   :data-background: #ffffff
+   :data-transition: slide
 
    .. image:: images/exemple-pti.png
 
-.. revealjs:: Qu'est qu'on retrouve
+.. revealjs:: Installation batchs Java
    :subtitle: 19 pages de littérature inoubliable
 
     - Un cartouche (3 pages)
@@ -61,11 +70,18 @@ Welcome to Meetup IAC's documentation!
     - Les commanges à lancer (10 pages)
 
 .. revealjs:: Tout ça pour ...
-   
+   :data-background: #ffffff
+   :data-transition: slide
+
+   .. image:: images/is-that-all-you-got.gif
+      :width: 800
+
+   .. rv_note::
+
     - Un groupe
     - Un utilisateur
     - Un JDK
-    - Des répertoires
+    - Quelques répertoires
 
 .. revealjs:: Maintenant, il faut
 
@@ -77,16 +93,26 @@ Welcome to Meetup IAC's documentation!
     - Configurer la sauvegarde
     - ...
 
-.. revealjs:: Et pour faire tout ça vous avez ...
+.. revealjs:: Et vous avez ...
+   :data-background: #ffffff
 
     - environ 400 pages de littérature à suivre
     - les zones d'ombres
     - les gestes non documentés
 
-.. revealjs:: Problème vous devez ...
+.. revealjs:: Mais vous devez également ...
 
     - Gérer plusieurs environnements
     - Lancer l'installation plusieurs fois
+    - Gérer la production
+    - Exploiter les plateformes
+
+.. revealjs:: Préparez-vous, ça va chauffer
+   :data-background: #f8d62d
+   :data-transition: zoom
+
+   .. image:: images/dragon-to-slay.png
+      :width: 800
 
 .. revealjs:: Création d'infra
    :subtitle: Vite, tous dans le cloud !
@@ -96,43 +122,106 @@ Welcome to Meetup IAC's documentation!
 
 .. revealjs:: Problème
 
-    .. image:: images/ikea-henj-1.jpg
-       :align: right
-       :width: 460
-
-    .. image:: images/ikea-henj-2.jpg
-       :align: right
-       :width: 460
+  .. image:: images/charlot-les-temps-modernes.gif
+     :width: 800
 
 .. revealjs:: Scalabilité et erreurs
 
-    .. image:: images/monkey-keyboard.jpg
+  .. image:: images/ikea-henj-1.jpg
+      :align: right
+      :width: 460
+
+  .. image:: images/ikea-henj-2.jpg
+      :align: right
+      :width: 460
 
 .. revealjs:: Comment sortir de cette situation
+   :data-background: #ffffff
+   :data-transition: slide
 
-    .. image:: images/brain-to-bin.png
+   .. image:: images/brain-to-bin.png
 
 .. revealjs:: Quelques solutions
    :data-background: #ffffff
 
-    .. image:: images/api-cloud.png
-       :width: 200
-    .. image:: images/terraform.svg
-       :width: 200
+   .. image:: images/api-cloud.png
+      :width: 200
+   .. image:: images/terraform.svg
+      :width: 200
 
-    |
+   |
 
-    .. image:: images/logo_ansible.png
-       :width: 200
-    .. image:: images/docker.png
-       :width: 200
+   .. image:: images/logo_ansible.png
+      :width: 200
+   .. image:: images/docker.png
+      :width: 200
 
-.. revealjs:: Pour la suite
+.. revealjs:: Utilisation d'Ansible
+   :data-background: #ffffff
 
-    Installation du socle technique
+   .. image:: images/ansible-architecture.png
 
-Indices and tables
-==================
+   .. rv_note::
+
+      - Description des gestes
+      - Liste de machines
+      - Lancement du programme
+      - C'est prêt !
+
+.. revealjs:: Le playbook
+
+   .. rv_code::
+
+    - name: "Create JDK directory"
+      file:
+        path: "/opt/jdk"
+        state: directory
+    - name: "Uncompress JDK"
+      unarchive:
+        src: "jdk-9.0.4_linux-x64_bin.tar.gz"
+        dest: "/opt/jdk"
+
+.. revealjs:: L'inventaire
+
+   .. rv_code::
+
+     [batch]
+     demo-batch1
+
+     [tomcat]
+     demo-tomcat1
+
+     [all:vars]
+     ansible_connection=docker
+     docker_network_name=demo.meetup
+
+
+.. revealjs:: Utilisation d'Ansible
+   :subtitle: Création de VM/container
+
+    - Description plateforme attendue
+    - Demande de provisionnement
+
+.. revealjs:: Démo
+
+   .. image:: images/devops-demo.png
+      :width: 750
+
+.. revealjs:: Ce qu'il faut retenir
+   :data-background: #ffffff
+   :data-transition: slide
+
+    - L'infra se gére comme du code
+    - En conséquence l'exploitation également
+    - Repenser certains aspects
+
+.. revealjs::
+   :data-background: #60beb6
+
+   .. image:: images/ask-me-anything.gif
+
+Index
+=====
 
 * :ref:`genindex`
 * :ref:`modindex`

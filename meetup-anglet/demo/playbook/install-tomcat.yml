@@ -1,0 +1,44 @@
+---
+
+- name: "Install Tomcat"
+  hosts: [ "tomcat" ]
+  gather_facts: no
+  tasks:
+    - name: "Create tomcat group"
+      group:
+        name: "tomcat"
+        state: present
+
+    - name: "Create tomcat user"
+      user:
+        name: "tomcat"
+        group: "tomcat"
+        state: present
+
+    - name: "Create tomcat directory"
+      file:
+        path: "/opt/tomcat"
+        owner: "tomcat"
+        group: "tomcat"
+        state: directory
+
+    - name: "Uncompress tomcat"
+      unarchive:
+        src: "apache-tomcat-9.0.5.tar.gz"
+        dest: "/opt/tomcat"
+        owner: "tomcat"
+        group: "tomcat"
+      args:
+        creates: "/opt/tomcat/apache-tomcat-9.0.5/bin/catalina.sh"
+
+    - name: "Start tomcat"
+      become: yes
+      become_user: "tomcat"
+      become_method: "su"
+      shell: "curl localhost:8080 &> /dev/null || /opt/tomcat/apache-tomcat-9.0.5/bin/catalina.sh start"
+      environment:
+        JAVA_HOME: "/opt/jdk/jdk-9.0.4"
+      register: _
+      args:
+        warn: no
+      changed_when: "'Tomcat started.' in _.stdout"

@@ -1,0 +1,9 @@
+[batch]
+demo-batch1
+
+[tomcat]
+demo-tomcat1
+
+[all:vars]
+ansible_connection=docker
+docker_network_name=demo.meetup

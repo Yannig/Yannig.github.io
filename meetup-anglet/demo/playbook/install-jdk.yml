@@ -1,0 +1,21 @@
+---
+
+- name: "Install JDK"
+  hosts: [ "batch", "tomcat" ]
+  gather_facts: no
+  tasks:
+    - name: "Create JDK directory"
+      file:
+        path: "/opt/jdk"
+        state: directory
+        owner: "root"
+        group: "root"
+
+    - name: "Uncompress JDK"
+      unarchive:
+        src:   "jdk-9.0.4_linux-x64_bin.tar.gz"
+        dest:  "/opt/jdk"
+        owner: "root"
+        group: "root"
+      args:
+        creates: "/opt/jdk/jdk-9.0.4/bin/java"

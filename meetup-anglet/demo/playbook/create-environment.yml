@@ -1,0 +1,20 @@
+---
+
+- name: "Create environment"
+  hosts: "all"
+  gather_facts: no
+  vars:
+    ansible_connection: "local"
+  tasks:
+    - name: "Create network"
+      docker_network:
+        name: "{{docker_network_name}}"
+        state: present
+      run_once: yes
+    - name: "Create container"
+      docker_container:
+        name: "{{inventory_hostname}}"
+        image: "centos/systemd"
+        networks:
+          - name: "{{docker_network_name}}"
+        state: started

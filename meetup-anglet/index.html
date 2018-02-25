@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+
+
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Meetup IAC Anglet &mdash; documentation Meetup IAC </title>
+
+    
+
+    
+<link rel="stylesheet" href="_static/css/reveal.css">
+<link rel="stylesheet" href="_static/css/theme/black.css" id="theme">
+<link rel="stylesheet" href="_static/lib/css/zenburn.css">
+<link rel="stylesheet" href="_static/revealjs.css" type="text/css" />
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+        if(window.location.search.match(/print-pdf/gi)) {
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = '_static/css/print/pdf.css';
+            document.getElementsByTagName('head')[0].appendChild(link);
+        }
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="_static/lib/js/html5shiv.js"></script>
+    <![endif]-->
+      <script type="text/javascript" src="_static/translations.js"></script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        
+  <div class="section" id="meetup-iac-anglet">
+<h1>Meetup IAC Anglet<a class="headerlink" href="#meetup-iac-anglet" title="Lien permanent vers ce titre">¶</a></h1>
+<section data-background="#ffffff">
+<h2>Meetup Agile Pays-Basque</h2>
+<h3>Infrastructure as Code</h3>
+<a class="first reference internal image-reference" href="_images/logo_ansible.png"><img alt="_images/logo_ansible.png" src="_images/logo_ansible.png" style="height: 100px;" /></a>
+<a class="reference internal image-reference" href="_images/docker.png"><img alt="_images/docker.png" src="_images/docker.png" style="height: 100px;" /></a>
+<p><a class="reference external" href="http://lesaventuresdeyannigdanslemondeit.blogspot.fr">Yannig Perré</a> / <a class="reference external" href="https://twitter.com/YannigPerre">&#64;Twitter</a></p>
+<a class="reference external image-reference" href="https://twitter.com/YannigPerre"><img alt="_images/twitter-logo.png" src="_images/twitter-logo.png" style="height: 40px;" /></a>
+<a class="last reference external image-reference" href="https://github.com/Yannig"><img alt="_images/github-icon.png" src="_images/github-icon.png" style="height: 40px;" /></a>
+</section>
+<section data-background="#052535">
+<h2>Infrastructure as Code</h2>
+<img alt="_images/infrastructure-as-code.png" class="first" src="_images/infrastructure-as-code.png" />
+<aside class="last notes">
+<ul class="first last simple">
+<li>Changements introduits par l’agilité</li>
+<li>Qu’est ce qu’apporte l’agilité</li>
+<li>Mutation qui peuvent en découler</li>
+<li>Mise en application</li>
+</ul>
+</aside>
+</section>
+<section data-background="#ffffff">
+<h2>Principe agilité</h2>
+<img alt="_images/principe-agilite.png" class="first last" src="_images/principe-agilite.png" />
+</section>
+<section>
+<h2>Ce qui se traduit par ...</h2>
+<ul class="first last simple">
+<li>Augmentation fréquence livraisons</li>
+<li>Intégration continue</li>
+<li>Déploiement continue</li>
+<li>Augmentation environnements</li>
+</ul>
+</section>
+<section>
+<h2>Scalabilité sysadmin</h2>
+<img alt="_images/sysadmin-no-root-access.jpg" class="first" src="_images/sysadmin-no-root-access.jpg" />
+<aside class="last notes">
+<ul class="first last simple">
+<li>Où les trouver</li>
+<li>Les former</li>
+<li>Vite, faisons des procédures</li>
+</ul>
+</aside>
+</section>
+<section data-background="#ffffff" data-transition="slide">
+<h2>Document d'installation</h2>
+<img alt="_images/exemple-pti.png" class="first last" src="_images/exemple-pti.png" />
+</section>
+<section>
+<h2>Installation batchs Java</h2>
+<h3>19 pages de littérature inoubliable</h3>
+<blockquote class="first last">
+<div><ul class="simple">
+<li>Un cartouche (3 pages)</li>
+<li>Une table des matières</li>
+<li>Une présentation (3 pages)</li>
+<li>Des prérequis (2 pages)</li>
+<li>Les commanges à lancer (10 pages)</li>
+</ul>
+</div></blockquote>
+</section>
+<section data-background="#ffffff" data-transition="slide">
+<h2>Tout ça pour ...</h2>
+<a class="first reference internal image-reference" href="_images/is-that-all-you-got.gif"><img alt="_images/is-that-all-you-got.gif" src="_images/is-that-all-you-got.gif" style="width: 800px;" /></a>
+<aside class="last notes">
+<ul class="first last simple">
+<li>Un groupe</li>
+<li>Un utilisateur</li>
+<li>Un JDK</li>
+<li>Quelques répertoires</li>
+</ul>
+</aside>
+</section>
+<section>
+<h2>Maintenant, il faut</h2>
+<ul class="first last simple">
+<li>Un serveur d’application</li>
+<li>Une base de données</li>
+<li>Un serveur Apache</li>
+<li>Installer l’application</li>
+<li>De la surveillance</li>
+<li>Configurer la sauvegarde</li>
+<li>…</li>
+</ul>
+</section>
+<section data-background="#ffffff">
+<h2>Et vous avez ...</h2>
+<blockquote class="first last">
+<div><ul class="simple">
+<li>environ 400 pages de littérature à suivre</li>
+<li>les zones d’ombres</li>
+<li>les gestes non documentés</li>
+</ul>
+</div></blockquote>
+</section>
+<section>
+<h2>Mais vous devez également ...</h2>
+<ul class="first last simple">
+<li>Gérer plusieurs environnements</li>
+<li>Lancer l’installation plusieurs fois</li>
+<li>Gérer la production</li>
+<li>Exploiter les plateformes</li>
+</ul>
+</section>
+<section data-background="#f8d62d" data-transition="zoom">
+<h2>Préparez-vous, ça va chauffer</h2>
+<a class="first last reference internal image-reference" href="_images/dragon-to-slay.png"><img alt="_images/dragon-to-slay.png" src="_images/dragon-to-slay.png" style="width: 800px;" /></a>
+</section>
+<section>
+<h2>Création d'infra</h2>
+<h3>Vite, tous dans le cloud !</h3>
+<blockquote class="first last">
+<div><ul class="simple">
+<li>Mise à disposition rapide</li>
+<li>Paiement à la consommation</li>
+</ul>
+</div></blockquote>
+</section>
+<section>
+<h2>Problème</h2>
+<a class="first last reference internal image-reference" href="_images/charlot-les-temps-modernes.gif"><img alt="_images/charlot-les-temps-modernes.gif" src="_images/charlot-les-temps-modernes.gif" style="width: 800px;" /></a>
+</section>
+<section>
+<h2>Scalabilité et erreurs</h2>
+<a class="first reference internal image-reference" href="_images/ikea-henj-1.jpg"><img alt="_images/ikea-henj-1.jpg" class="align-right" src="_images/ikea-henj-1.jpg" style="width: 460px;" /></a>
+<a class="last reference internal image-reference" href="_images/ikea-henj-2.jpg"><img alt="_images/ikea-henj-2.jpg" class="align-right" src="_images/ikea-henj-2.jpg" style="width: 460px;" /></a>
+</section>
+<section data-background="#ffffff" data-transition="slide">
+<h2>Comment sortir de cette situation</h2>
+<img alt="_images/brain-to-bin.png" class="first last" src="_images/brain-to-bin.png" />
+</section>
+<section data-background="#ffffff">
+<h2>Quelques solutions</h2>
+<a class="first reference internal image-reference" href="_images/api-cloud.png"><img alt="_images/api-cloud.png" src="_images/api-cloud.png" style="width: 200px;" /></a>
+<a class="reference internal image-reference" href="_images/terraform.svg"><img alt="_images/terraform.svg" src="_images/terraform.svg" width="200" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<a class="reference internal image-reference" href="_images/logo_ansible.png"><img alt="_images/logo_ansible.png" src="_images/logo_ansible.png" style="width: 200px;" /></a>
+<a class="last reference internal image-reference" href="_images/docker.png"><img alt="_images/docker.png" src="_images/docker.png" style="width: 200px;" /></a>
+</section>
+<section data-background="#ffffff">
+<h2>Utilisation d'Ansible</h2>
+<img alt="_images/ansible-architecture.png" class="first" src="_images/ansible-architecture.png" />
+<aside class="last notes">
+<ul class="first last simple">
+<li>Description des gestes</li>
+<li>Liste de machines</li>
+<li>Lancement du programme</li>
+<li>C’est prêt !</li>
+</ul>
+</aside>
+</section>
+<section>
+<h2>Le playbook</h2>
+<pre class="first last">
+<code data-trim contenteditable>- name: "Create JDK directory"
+  file:
+    path: "/opt/jdk"
+    state: directory
+- name: "Uncompress JDK"
+  unarchive:
+    src: "jdk-9.0.4_linux-x64_bin.tar.gz"
+    dest: "/opt/jdk"</code></pre>
+</section>
+<section>
+<h2>L'inventaire</h2>
+<pre class="first last">
+<code data-trim contenteditable>[batch]
+demo-batch1
+
+[tomcat]
+demo-tomcat1
+
+[all:vars]
+ansible_connection=docker
+docker_network_name=demo.meetup</code></pre>
+</section>
+<section>
+<h2>Utilisation d'Ansible</h2>
+<h3>Création de VM/container</h3>
+<blockquote class="first last">
+<div><ul class="simple">
+<li>Description plateforme attendue</li>
+<li>Demande de provisionnement</li>
+</ul>
+</div></blockquote>
+</section>
+<section>
+<h2>Démo</h2>
+<a class="first last reference internal image-reference" href="_images/devops-demo.png"><img alt="_images/devops-demo.png" src="_images/devops-demo.png" style="width: 750px;" /></a>
+</section>
+<section data-background="#ffffff" data-transition="slide">
+<h2>Ce qu'il faut retenir</h2>
+<blockquote class="first last">
+<div><ul class="simple">
+<li>L’infra se gére comme du code</li>
+<li>En conséquence l’exploitation également</li>
+<li>Repenser certains aspects</li>
+</ul>
+</div></blockquote>
+</section>
+<section data-background="#60beb6">
+<img alt="_images/ask-me-anything.gif" class="first last" src="_images/ask-me-anything.gif" />
+</section>
+</div>
+<div class="section" id="index">
+<h1>Index<a class="headerlink" href="#index" title="Lien permanent vers ce titre">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Index du module</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Page de recherche</span></a></li>
+</ul>
+</div>
+
+
+      </div>
+    </div>
+    
+<script src="_static/js/jquery.min.js"></script>
+<script src="_static/lib/js/head.min.js"></script>
+<script src="_static/js/reveal.js"></script>
+    <script>
+
+      // change DOM for reveal.js
+      $("div.section h1").remove();
+      var content = $("div.section").html();
+      $("div.section").remove();
+      $("div.slides").html(content);
+
+      Reveal.initialize({
+        width: 960,
+        height: 700,
+
+        margin: 0.1,
+
+        minScale: 0.2,
+        maxScale: 1.0,
+
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        keyboard : true,
+        overview: true,
+        touch: true,
+        loop: false,
+        rtl: false,
+        fragments: true,
+
+        autoSlide: 0,
+        mouseWheel: false,
+        rollingLinks: false,
+        previewLinks: false,
+
+        transitionSpeed: "default",
+        backgroundTransition: "default",
+
+        slideNumber: false,
+        embedded: false,
+        autoSlideStoppable: true,
+        hideAddressBar: true,
+
+        parallaxBackgroundImage: "",
+        parallaxBackgroundSize: "",
+
+        focusBodyOnPageVisiblityChange: true,
+
+        viewDistance: 3,
+
+        transition: Reveal.getQueryHash().transition || "default",
+
+        
+
+        dependencies: [
+           { src: '_static/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+           { src: '_static/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+           { src: '_static/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+           { src: '_static/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+           { src: '_static/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+           { src: '_static/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+    </script>
+    
+  </body>
+</html>

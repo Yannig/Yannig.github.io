@@ -20,6 +20,13 @@ Meetup IAC Anglet
       :target: https://github.com/Yannig
       :height: 40
 
+.. revealjs:: Qui suis-je
+
+   .. rv_note::
+
+      - Administrateur système et Java
+      - Auteur d'un bouquin
+
 .. revealjs:: Infrastructure as Code
    :data-background: #052535
 
@@ -27,8 +34,8 @@ Meetup IAC Anglet
 
    .. rv_note::
 
-      - Changements introduits par l'agilité
       - Qu'est ce qu'apporte l'agilité
+      - Changements introduits par l'agilité
       - Mutation qui peuvent en découler
       - Mise en application
 
@@ -120,11 +127,6 @@ Meetup IAC Anglet
     - Mise à disposition rapide
     - Paiement à la consommation
 
-.. revealjs:: Problème
-
-  .. image:: images/charlot-les-temps-modernes.gif
-     :width: 800
-
 .. revealjs:: Scalabilité et erreurs
 
   .. image:: images/ikea-henj-1.jpg
@@ -135,11 +137,30 @@ Meetup IAC Anglet
       :align: right
       :width: 460
 
+  .. rv_note::
+
+    - Vous devez toujours gérer votre installation
+    - Il faut faire attention
+    - Vous avez toujours des erreurs
+
+.. revealjs:: Problème
+
+  .. image:: images/charlot-les-temps-modernes.gif
+     :width: 800
+
 .. revealjs:: Comment sortir de cette situation
    :data-background: #ffffff
    :data-transition: slide
 
    .. image:: images/brain-to-bin.png
+
+   .. rv_note::
+
+    - Traduire les gestes en description
+    - Shell
+    - Idempotence
+    - Immutabilité
+    - BDD et stateless
 
 .. revealjs:: Quelques solutions
    :data-background: #ffffff
@@ -155,6 +176,12 @@ Meetup IAC Anglet
       :width: 200
    .. image:: images/docker.png
       :width: 200
+
+   .. rv_note::
+
+    - Azure AWS
+    - Ansible idempotence
+    - Docker immutable Microservice
 
 .. revealjs:: Utilisation d'Ansible
    :data-background: #ffffff
@@ -197,10 +224,13 @@ Meetup IAC Anglet
 
 
 .. revealjs:: Utilisation d'Ansible
-   :subtitle: Création de VM/container
 
     - Description plateforme attendue
     - Demande de provisionnement
+    - Installer un JDK
+    - Installer un Tomcat
+    - Déployer une application
+    - Détruire un environnement
 
 .. revealjs:: Démo
 
@@ -211,6 +241,10 @@ Meetup IAC Anglet
    :data-background: #ffffff
    :data-transition: slide
 
+   .. rv_note::
+
+    - Flocon de neige
+    - Animaux de compagnie vs Bétail
     - L'infra se gére comme du code
     - En conséquence l'exploitation également
     - Repenser certains aspects

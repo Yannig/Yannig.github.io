@@ -225,7 +225,7 @@ Meetup IAC Anglet
 
    .. rv_note::
 
-    - Azure AWS
+    - Azure AWS et abstraction avec Terraform
     - Ansible idempotence
     - Docker immutable Microservice
 

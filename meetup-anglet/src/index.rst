@@ -25,7 +25,7 @@ Meetup IAC Anglet
    .. rv_note::
 
       - Administrateur système et Java
-      - Auteur d'un bouquin
+      - Auteur d'un livre sur Ansible
 
 .. revealjs:: Infrastructure as Code
    :data-background: #052535
@@ -34,22 +34,45 @@ Meetup IAC Anglet
 
    .. rv_note::
 
-      - Qu'est ce qu'apporte l'agilité
-      - Changements introduits par l'agilité
-      - Mutation qui peuvent en découler
-      - Mise en application
+      - On va revenir sur la notion d'agilité
+      - Les changements qui en découlent
+      - Mise en application sur un cas simple
 
 .. revealjs:: Principe agilité
    :data-background: #ffffff
 
    .. image:: images/principe-agilite.png
 
-.. revealjs:: Ce qui se traduit par ...
+   .. rv_note::
 
-    - Augmentation fréquence livraisons
+    - Feedbacks régulier
+    - Production de livrables intermédiaires
+
+.. revealjs:: Une première réponse
+
     - Intégration continue
     - Déploiement continue
-    - Augmentation environnements
+
+   .. rv_note::
+
+    - Automatisation de vos process
+    - Concentration sur ce qui a de la valeur
+    - Attention de ne pas se prendre les pieds dans le tapis
+
+.. revealjs:: Augmentation fréquence livraisons
+
+   .. image:: images/hamster-cage.gif
+
+.. revealjs:: Gestion environnements
+
+
+   .. rv_note::
+
+    Invariablement, vous devriez augmenter le nombre de serveur
+
+    Mais vous allez sûrement faire à des changements de versions
+
+    Et un jour, le dev va vouloir faire des Microservices
 
 .. revealjs:: Scalabilité sysadmin
 
@@ -57,9 +80,8 @@ Meetup IAC Anglet
 
    .. rv_note::
 
-    - Où les trouver
-    - Les former
-    - Vite, faisons des procédures
+    - Difficile à trouver et former
+    - Essayons de comprendre leur travail
 
 .. revealjs:: Document d'installation
    :data-background: #ffffff
@@ -68,7 +90,10 @@ Meetup IAC Anglet
    .. image:: images/exemple-pti.png
 
 .. revealjs:: Installation batchs Java
-   :subtitle: 19 pages de littérature inoubliable
+
+   19 pages de littérature inoubliable
+
+   .. rv_note::
 
     - Un cartouche (3 pages)
     - Une table des matières
@@ -90,7 +115,9 @@ Meetup IAC Anglet
     - Un JDK
     - Quelques répertoires
 
-.. revealjs:: Maintenant, il faut
+.. revealjs:: Maintenant, il faut ...
+
+   .. rv_note::
 
     - Un serveur d'application
     - Une base de données
@@ -103,11 +130,15 @@ Meetup IAC Anglet
 .. revealjs:: Et vous avez ...
    :data-background: #ffffff
 
+   .. rv_note::
+
     - environ 400 pages de littérature à suivre
     - les zones d'ombres
     - les gestes non documentés
 
 .. revealjs:: Mais vous devez également ...
+
+   .. rv_note::
 
     - Gérer plusieurs environnements
     - Lancer l'installation plusieurs fois
@@ -140,13 +171,8 @@ Meetup IAC Anglet
   .. rv_note::
 
     - Vous devez toujours gérer votre installation
-    - Il faut faire attention
-    - Vous avez toujours des erreurs
-
-.. revealjs:: Problème
-
-  .. image:: images/charlot-les-temps-modernes.gif
-     :width: 800
+    - Documenter vos gestes
+    - Problème de reproductibilité des installations
 
 .. revealjs:: Comment sortir de cette situation
    :data-background: #ffffff
@@ -157,10 +183,27 @@ Meetup IAC Anglet
    .. rv_note::
 
     - Traduire les gestes en description
-    - Shell
-    - Idempotence
-    - Immutabilité
-    - BDD et stateless
+    - Shell (problème réentrance)
+    - DevOps (Idempotence ou Immutabilité)
+
+.. revealjs:: Les outils DevOps
+
+   .. rv_note::
+
+    - Décrire les gestes
+    - Passer à un automate
+    - Appliquer cette description
+
+.. revealjs:: Attention aux surprises
+   :data-background: #dd5726
+
+   Surtout en cas de pépin
+
+   .. rv_note::
+
+    - Modification d'un fichier géré par l'automate
+    - Relance de l'installation
+    - Perte de la modification
 
 .. revealjs:: Quelques solutions
    :data-background: #ffffff

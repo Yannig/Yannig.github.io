@@ -80,8 +80,8 @@ Meetup IAC Anglet
 
    .. rv_note::
 
-    - Difficile à trouver et former
-    - Essayons de comprendre leur travail
+    - Un jour vous allez devoir le voir
+    - Avant de raler contre lui, essayons de comprendre son travail
 
 .. revealjs:: Document d'installation
    :data-background: #ffffff
@@ -141,7 +141,7 @@ Meetup IAC Anglet
    .. rv_note::
 
     - Gérer plusieurs environnements
-    - Lancer l'installation plusieurs fois
+    - Lancer l'installation plusieurs fois (scalabilité tomcat)
     - Gérer la production
     - Exploiter les plateformes
 
@@ -153,7 +153,10 @@ Meetup IAC Anglet
       :width: 800
 
 .. revealjs:: Création d'infra
-   :subtitle: Vite, tous dans le cloud !
+
+   Vite, tous dans le cloud !
+
+   .. rv_note::
 
     - Mise à disposition rapide
     - Paiement à la consommation

@@ -1,8 +1,8 @@
 [batch]
-prod-batch[1:2]
+prod-batch1
 
 [tomcat]
-prod-tomcat[1:4]
+prod-tomcat[1:2]
 
 [all:vars]
 ansible_connection=docker
